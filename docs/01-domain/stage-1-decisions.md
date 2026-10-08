@@ -189,6 +189,8 @@ The exact monetary instruments, settlement model, commitment and finality semant
 
 Royal City may initiate and coordinate payments through connected external payment, banking, mobile-money, or other financial systems. Royal City does not need to hold or stockpile participants' money in order to coordinate these payments; the actual movement and settlement of funds may be performed by the connected external financial system. The exact payment initiation, authorization, settlement, confirmation, failure, reversal, refund, and reconciliation mechanics remain open.
 
+A person may associate multiple external payment sources or financial accounts with their Royal City identity, subject to applicable authorization and provider support, and may select an appropriate source for a particular payment. Royal City may also support multiple payment-authorization methods, including methods based on devices, credentials, biometrics, or other approved mechanisms. For example, a person may authorize a payment using a palm-based biometric method. A payment-authorization method identifies or authenticates the authorized participant and does not itself constitute a monetary instrument or require Royal City to hold the participant's funds. The exact supported methods, security requirements, consent, fallback, verification, and external-provider mechanics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
