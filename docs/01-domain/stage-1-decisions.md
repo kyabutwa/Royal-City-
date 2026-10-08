@@ -86,9 +86,21 @@ A community is a participating residential property/real-estate environment. Pro
 Detailed governance, ownership structures, membership taxonomy, and disputes remain open.
 
 ## D-107 — Place hierarchy
-**Status: Open**
+**Status: Resolved at foundational level**
 
-Property/building/unit/facility/infrastructure hierarchy remains to be defined.
+Royal City places may form a hierarchy that reflects the real physical/spatial environment and may include intermediate structures such as phases.
+
+A representative hierarchy may be:
+
+`Community → Phase → Property → Building → Floor → Unit → Room → Facility → Infrastructure`
+
+This is illustrative rather than a mandatory universal sequence. The hierarchy must be able to represent the actual structure of a participating environment.
+
+Example:
+
+`Royal City → Tsavo Royal Suburb Roysambu (Community) → Phase → Property/Plot → Building → Floor → Unit → Room`
+
+The exact place types, containment rules, spatial relationships, and treatment of shared/non-contained places remain open.
 
 ## D-108 — Resource model
 **Status: Open**
