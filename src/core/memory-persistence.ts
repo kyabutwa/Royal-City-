@@ -122,7 +122,7 @@ function validateRecord(
       requireText((record as PersistenceRecordMap["authorizations"]).validFrom);
       if ((record as PersistenceRecordMap["authorizations"]).relationshipId) requireReference(tx, "relationships", (record as PersistenceRecordMap["authorizations"]).relationshipId!);
       if ((record as PersistenceRecordMap["authorizations"]).contextId) requireReference(tx, "contexts", (record as PersistenceRecordMap["authorizations"]).contextId!);
-      if (record.validUntil) {
+      if ((record as PersistenceRecordMap["authorizations"]).validUntil) {
         const from = new Date((record as PersistenceRecordMap["authorizations"]).validFrom);
         const until = new Date((record as PersistenceRecordMap["authorizations"]).validUntil!);
         if (Number.isNaN(from.getTime()) || Number.isNaN(until.getTime())) {
@@ -134,7 +134,7 @@ function validateRecord(
 
     case "actions":
       requireReference(tx, "authorizations", (record as PersistenceRecordMap["actions"]).authorizationId);
-      requireText(record.actorId);
+      requireText((record as PersistenceRecordMap["actions"]).actorId);
       requireText((record as PersistenceRecordMap["actions"]).operation);
       requireText((record as PersistenceRecordMap["actions"]).createdAt);
       requireText((record as PersistenceRecordMap["actions"]).updatedAt);
@@ -155,7 +155,7 @@ function validateRecord(
       return;
 
     case "evidence":
-      requireText(record.source);
+      requireText((record as PersistenceRecordMap["evidence"]).source);
       requireText((record as PersistenceRecordMap["evidence"]).recordedAt);
       if ((record as PersistenceRecordMap["evidence"]).eventId) requireReference(tx, "events", (record as PersistenceRecordMap["evidence"]).eventId!);
       return;
