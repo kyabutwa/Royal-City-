@@ -146,6 +146,8 @@ Resources may be reserved before actual use. A reservation may temporarily hold 
 A resource may have an owner and/or controlling authority distinct from the participants who use it. Ownership and control may belong to a community, provider, Royal City service, person, organization, or other authorized authority depending on the resource. The exact ownership/control categories, rights, transfer rules, and precedence remain open.
 
 Resources may have access and usage rules that determine who or what may access, use, reserve, operate, or consume them. These rules may differ by role, relationship, authorization, place, context, time, or other conditions. The exact policy model and precedence remain open.
+
+Resource access and usage may also be conditional. Conditions may depend on time, capacity, reservations, supervision, emergencies, required qualifications or training, operating status, place, context, or other domain conditions. The exact condition model, evaluation rules, precedence, and conflict handling remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
