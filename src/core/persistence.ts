@@ -99,17 +99,35 @@ export interface ContextRecord {
   readonly status: "ACTIVE" | "SUSPENDED" | "EXPIRED" | "CLOSED";
 }
 
-export interface AuthorizationRecord {
+export type AuthorizationDecision = "ALLOW" | "DENY";
+export type AuthorizationLifecycle = "ACTIVE" | "SUSPENDED" | "REVOKED" | "EXPIRED" | "CLOSED";
+
+export interface AuthorityRecord {
   readonly id: Id;
-  readonly actorId: Id;
-  readonly actionType: string;
-  readonly decision: "ALLOW" | "DENY";
+  readonly principalId: Id;
+  readonly targetId: Id;
+  readonly kind: string;
+  readonly source: string;
+  readonly scope?: string;
   readonly validFrom: string;
   readonly validUntil?: string;
-  readonly scope?: string;
-  readonly relationshipId?: Id;
-  readonly contextId?: Id;
+  readonly lifecycle: "PROPOSED" | "ACTIVE" | "SUSPENDED" | "REVOKED" | "EXPIRED" | "CLOSED";
 }
+
+export interface AuthorizationRecord {
+  readonly id: Id;
+  readonly requesterId: Id;
+  readonly action: string;
+  readonly targetId: Id;
+  readonly contextId?: Id;
+  readonly authorityId?: Id;
+  readonly decision: AuthorizationDecision;
+  readonly lifecycle: AuthorizationLifecycle;
+  readonly reason?: string;
+  readonly decidedAt: string;
+  readonly expiresAt?: string;
+}
+
 
 export interface ActionRecord {
   readonly id: Id;
