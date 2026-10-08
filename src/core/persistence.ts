@@ -22,6 +22,7 @@ export type RepositoryTable =
   | "participations"
   | "relationships"
   | "contexts"
+  | "authorities"
   | "authorizations"
   | "actions"
   | "events"
@@ -116,16 +117,22 @@ export interface AuthorityRecord {
 
 export interface AuthorizationRecord {
   readonly id: Id;
-  readonly requesterId: Id;
-  readonly action: string;
-  readonly targetId: Id;
+  readonly requesterId?: Id;
+  readonly action?: string;
+  readonly targetId?: Id;
   readonly contextId?: Id;
   readonly authorityId?: Id;
   readonly decision: AuthorizationDecision;
-  readonly lifecycle: AuthorizationLifecycle;
+  readonly lifecycle?: AuthorizationLifecycle;
   readonly reason?: string;
-  readonly decidedAt: string;
+  readonly decidedAt?: string;
   readonly expiresAt?: string;
+  /** Legacy canonical fields retained for persistence compatibility during migration. */
+  readonly actorId?: Id;
+  readonly actionType?: string;
+  readonly validFrom?: string;
+  readonly validUntil?: string;
+  readonly relationshipId?: Id;
 }
 
 
@@ -179,6 +186,7 @@ export interface PersistenceRecordMap {
   participations: ParticipationRecord;
   relationships: RelationshipRecord;
   contexts: ContextRecord;
+  authorities: AuthorityRecord;
   authorizations: AuthorizationRecord;
   actions: ActionRecord;
   events: EventRecord;
