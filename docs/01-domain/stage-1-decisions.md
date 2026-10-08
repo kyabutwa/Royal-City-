@@ -118,6 +118,8 @@ This relationship vocabulary is illustrative; the complete taxonomy and exact se
 
 Place structures and relationships may change over time. Royal City must be able to represent changes such as additions, expansions, subdivisions, combinations, rerouting, and changes in which places or facilities are served or connected. The exact versioning, effective-date, history, and state-transition mechanics remain open.
 
+Royal City may also represent temporary places created for a limited period or in response to planned or unpredictable circumstances. Examples include temporary construction areas, event spaces, security checkpoints, emergency shelters, temporary markets, and temporary parking areas. Their lifecycle, effective period, transition, and retirement mechanics remain open.
+
 ## D-108 — Resource model
 **Status: Open**
 
