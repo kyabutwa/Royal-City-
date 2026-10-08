@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { InMemoryPersistenceRepository, id } from "../src/core/index.js";
+import { InMemoryPersistenceRepository, id } from "../../src/core/index.js";
 
 const person = id("person-1");
 const identity = id("identity-1");
