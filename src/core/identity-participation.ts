@@ -142,3 +142,98 @@ export async function endParticipation(
     return updated;
   });
 }
+
+
+export interface CreateRelationshipCommand {
+  readonly relationshipId: Id;
+  readonly subjectId: Id;
+  readonly targetId: Id;
+  readonly kind: string;
+  readonly governingDomain: string;
+  readonly source: string;
+  readonly lifecycle?: "PROPOSED" | "PENDING" | "ACTIVE" | "SUSPENDED" | "EXPIRED" | "REVOKED" | "CLOSED" | "SUPERSEDED";
+  readonly verification?: "DECLARED" | "OBSERVED" | "VERIFIED" | "INFERRED" | "PROPOSED";
+  readonly scope?: string;
+  readonly validFrom: string;
+  readonly validUntil?: string;
+}
+
+const canonicalTime = (value: string): string => {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) throw new Error("INVALID_INPUT");
+  return parsed.toISOString();
+};
+
+export async function createRelationship(
+  repository: PersistenceRepository,
+  command: CreateRelationshipCommand
+): Promise<RelationshipRecord> {
+  if (!command.subjectId.trim() || !command.targetId.trim() || !command.kind.trim() ||
+      !command.governingDomain.trim() || !command.source.trim()) {
+    throw new Error("INVALID_INPUT");
+  }
+  if (command.subjectId === command.targetId) throw new Error("VALIDATION_FAILURE");
+
+  const validFrom = canonicalTime(command.validFrom);
+  const validUntil = command.validUntil ? canonicalTime(command.validUntil) : undefined;
+  if (validUntil && new Date(validUntil) <= new Date(validFrom)) throw new Error("VALIDATION_FAILURE");
+
+  const relationship: RelationshipRecord = {
+    id: command.relationshipId,
+    subjectId: command.subjectId,
+    targetId: command.targetId,
+    kind: command.kind.trim(),
+    governingDomain: command.governingDomain.trim(),
+    source: command.source.trim(),
+    lifecycle: command.lifecycle ?? "ACTIVE",
+    verification: command.verification ?? "DECLARED",
+    ...(command.scope ? { scope: command.scope.trim() } : {}),
+    validFrom,
+    ...(validUntil ? { validUntil } : {})
+  };
+
+  await repository.transaction((tx) => tx.insert("relationships", relationship));
+  return relationship;
+}
+
+export interface CreateContextCommand {
+  readonly contextId: Id;
+  readonly participationId: Id;
+  readonly kind: string;
+  readonly placeId?: Id;
+  readonly communityId?: Id;
+  readonly purpose?: string;
+  readonly scope?: string;
+  readonly effectiveFrom: string;
+  readonly effectiveUntil?: string;
+}
+
+export async function createContext(
+  repository: PersistenceRepository,
+  command: CreateContextCommand
+): Promise<ContextRecord> {
+  if (!command.contextId.trim() || !command.participationId.trim() || !command.kind.trim()) {
+    throw new Error("INVALID_INPUT");
+  }
+  const effectiveFrom = canonicalTime(command.effectiveFrom);
+  const effectiveUntil = command.effectiveUntil ? canonicalTime(command.effectiveUntil) : undefined;
+  if (effectiveUntil && new Date(effectiveUntil) <= new Date(effectiveFrom)) {
+    throw new Error("VALIDATION_FAILURE");
+  }
+
+  const context: ContextRecord = {
+    id: command.contextId,
+    participationId: command.participationId,
+    kind: command.kind.trim(),
+    ...(command.placeId ? { placeId: command.placeId } : {}),
+    ...(command.communityId ? { communityId: command.communityId } : {}),
+    ...(command.purpose ? { purpose: command.purpose.trim() } : {}),
+    ...(command.scope ? { scope: command.scope.trim() } : {}),
+    effectiveFrom,
+    ...(effectiveUntil ? { effectiveUntil } : {}),
+    status: "ACTIVE"
+  };
+
+  await repository.transaction((tx) => tx.insert("contexts", context));
+  return context;
+}
