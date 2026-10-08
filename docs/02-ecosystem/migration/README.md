@@ -73,3 +73,10 @@ People, communities, and Royal City remain distinct:
 - **Royal City** is the NOS itself, not an ordinary participant account.
 
 This distinction is a Royal City canonical boundary and is therefore a mandatory reconciliation point for LegaKeys and LEGAX material.
+
+
+## BeatOne reconciliation
+
+BeatOne has been independently inspected and reconciled. The BeatOne package records its repository inventory, concept mapping, conflict register, implementation migration map, architecture delta, staged migration plan, and completion boundary.
+
+BeatOne is treated as a major executable implementation source, not as a competing Royal City product or platform authority.
