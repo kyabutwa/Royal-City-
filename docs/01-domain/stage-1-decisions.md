@@ -130,6 +130,8 @@ Royal City resources may represent anything that people, communities, providers,
 Representative examples include water, electricity, parking spaces, rooms, equipment, vehicles, network capacity, staff/service capacity, money or funds, storage, land or space, time slots, digital resources, and infrastructure capacity.
 
 The exact resource taxonomy, lifecycle, ownership/control model, availability model, allocation rules, consumption semantics, and measurement model remain open.
+
+Resources may be shared across multiple participants, places, buildings, units, phases, communities, providers, or systems. A single resource may therefore serve multiple consumers or contexts without being duplicated for each one.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
