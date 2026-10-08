@@ -191,6 +191,8 @@ Royal City may initiate and coordinate payments through connected external payme
 
 A person may associate multiple external payment sources or financial accounts with their Royal City identity, subject to applicable authorization and provider support, and may select an appropriate source for a particular payment. Royal City may also support multiple payment-authorization methods, including methods based on devices, credentials, biometrics, or other approved mechanisms. For example, a person may authorize a payment using a palm-based biometric method. A payment-authorization method identifies or authenticates the authorized participant and does not itself constitute a monetary instrument or require Royal City to hold the participant's funds. The exact supported methods, security requirements, consent, fallback, verification, and external-provider mechanics remain open.
 
+Royal City may support recurring, scheduled, or automatic payments when the participant has explicitly authorized the applicable payment arrangement. Examples include recurring community fees, utility bills, subscriptions, scheduled service payments, and installment payments. Automatic payment authorization may define the applicable amount or pricing rule, payment source, schedule or trigger, duration, limits, and conditions. The actual movement and settlement of funds may continue to be performed by the connected external financial system. The exact recurring-payment lifecycle, authorization renewal, cancellation, insufficient-funds handling, changes in amount, notifications, retries, disputes, and reconciliation remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
