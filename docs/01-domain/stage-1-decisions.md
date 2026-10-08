@@ -162,6 +162,10 @@ Resource transformations and consumption may produce waste, byproducts, losses, 
 Royal City resources may be continuously measured through telemetry or other automated observations. Measurements may report quantity, capacity, consumption, generation, occupancy, availability, state, performance, or other resource properties over time. The exact telemetry sources, measurement protocols, frequency, accuracy, trust model, storage, aggregation, and reconciliation rules remain open.
 
 Royal City may generate alerts or domain events when resource conditions, measurements, state changes, thresholds, patterns, or anomalies meet defined criteria. Alerts may represent conditions such as low levels, excessive load, overflow, full occupancy, critical battery state, severe capacity constraints, abnormal consumption, or other detected conditions. The exact alert taxonomy, threshold and pattern rules, severity model, detection confidence, escalation, notification, suppression, correlation, and automated-response semantics remain open.
+
+Royal City may forecast future resource conditions, demand, consumption, generation, availability, capacity, or other resource-related states using authorized historical measurements, current state, dependencies, patterns, and other permitted inputs. Forecasting may support planning, allocation, maintenance, capacity management, service continuity, and other authorized resource decisions. The exact forecasting models, horizons, confidence representation, validation, and operational use remain open.
+
+Personal data must not be used for resource forecasting merely because Royal City can access it. Where forecasting would use personal data, the person must have explicitly authorized that use for the applicable purpose, subject to applicable law and other domain constraints. Access to personal data does not itself constitute authorization to repurpose it for forecasting.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
