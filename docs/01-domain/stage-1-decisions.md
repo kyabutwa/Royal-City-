@@ -195,6 +195,8 @@ Royal City may support recurring, scheduled, or automatic payments when the part
 
 Authorized participants may create payment requests through Royal City for legitimate economic activities such as community fees, service charges, purchases, bookings, invoices, contributions, or other authorized obligations. A payment request may identify the requesting participant, payer or intended payer, amount or applicable pricing rule, purpose, due date or trigger, and other relevant conditions. A payment request does not itself move funds; the payer must authorize the applicable payment and settlement may be performed by a connected external financial system. The exact payment-request lifecycle, acceptance, rejection, expiration, modification, cancellation, dispute, and record semantics remain open.
 
+Royal City may support authorized payment splitting or allocation, where one payment is allocated among multiple authorized recipients, destinations, services, or obligations. Such allocation must be governed by an applicable authorization and allocation rule; Royal City must not distribute funds to recipients merely because it can technically route the payment. The allocation may be defined by the payer, an authorized recipient, a community rule, a service arrangement, or another authorized economic relationship. Actual settlement remains subject to the connected external financial system and applicable rules. The exact split-allocation lifecycle, precedence, rounding, failure handling, authorization changes, and reconciliation semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
