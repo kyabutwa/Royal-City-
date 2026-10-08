@@ -81,6 +81,11 @@ test("one person can hold independent community, provider and service participat
     identityId: id("identity-1"),
     accountId: id("account-1")
   });
+  await createCommunity(repository, {
+    communityId: id("community-1"),
+    credentialId: id("credential-1"),
+    name: "Royal Community"
+  });
   const community = await createParticipation(repository, {
     participationId: id("community-participation"),
     personId: id("person-1"),
