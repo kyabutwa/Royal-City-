@@ -339,7 +339,7 @@ export async function evaluateAuthorization(
     actionType: command.action.trim(),
     validFrom: decidedAt,
     ...(command.contextId ? { contextId: command.contextId } : {}),
-    ...(command.authorityId ? { authorityId: command.authorityId } : {}),
+    ...(command.authorityId && decision === "ALLOW" ? { authorityId: command.authorityId } : {}),
     decision,
     lifecycle: decision === "ALLOW" ? "ACTIVE" : "CLOSED",
     reason,
