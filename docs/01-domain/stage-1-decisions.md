@@ -209,6 +209,8 @@ Every payment coordinated through Royal City requires explicit authorization by 
 
 A payer may request cancellation of an authorized payment before settlement where cancellation is supported and still possible. A cancellation must not silently alter the payment state: Royal City should record the cancellation request and outcome and notify the relevant authorized participants. If the external financial system has already settled the payment or does not support cancellation, the payment may instead require a refund or other authorized resolution. The exact cancellation window, authority, notification timing, race conditions, and external-provider semantics remain open.
 
+A failed payment must be recorded as a failed payment outcome and must not be represented as completed or settled. Royal City should notify the relevant authorized participants of the failure and preserve the distinction between an attempted payment, a failed payment, and a completed or settled payment. Failure may result from insufficient funds, provider rejection, unavailable services, network failure, authorization failure, or other conditions. The exact failure taxonomy, retry behavior, notification timing, reconciliation, and recovery semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
