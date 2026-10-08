@@ -145,6 +145,13 @@ function validateRecord(
       if (value.relationshipId) requireReference(tx, "relationships", value.relationshipId);
       if (value.contextId) requireReference(tx, "contexts", value.contextId);
       if (value.authorityId) requireReference(tx, "authorities", value.authorityId);
+      if (value.validUntil && value.validFrom) {
+        const from = new Date(value.validFrom);
+        const until = new Date(value.validUntil);
+        if (Number.isNaN(from.getTime()) || Number.isNaN(until.getTime()) || until <= from) {
+          throw new Error("VALIDATION_FAILURE");
+        }
+      }
       return;
     }
 
