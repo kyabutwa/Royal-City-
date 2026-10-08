@@ -201,6 +201,8 @@ Royal City may support refunds and refund coordination for authorized payments w
 
 Royal City may support payment disputes as a first-class economic process. A dispute may address matters such as an incorrect charge, unauthorized payment, non-delivery or inadequate delivery of a service, duplicate charging, an unresolved refund, or another authorized economic disagreement. Royal City may coordinate dispute initiation, evidence, notifications, participant responses, status, escalation, and outcomes, subject to the applicable authority and rules. Where financial settlement or reversal is required, the appropriate authorized party and/or connected external financial system may perform the actual financial resolution. The exact dispute categories, evidence requirements, timelines, decision authority, escalation, provisional actions, resolution, appeal, and reconciliation semantics remain open.
 
+Royal City should create a payment record and proof of outcome for each coordinated payment. The record may capture the payment request, applicable authorization, payer and recipients, amount or allocation, purpose, payment source or method where permitted, timestamps, processing status, completion or failure outcome, refund or dispute relationship where applicable, and an external transaction or settlement reference where available. The record should distinguish what was requested, what was authorized, what was attempted, and what actually occurred. The exact receipt format, proof requirements, record visibility, correction, retention, reconciliation, and privacy rules remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
