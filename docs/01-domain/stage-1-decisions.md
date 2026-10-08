@@ -132,6 +132,8 @@ Representative examples include water, electricity, parking spaces, rooms, equip
 The exact resource taxonomy, lifecycle, ownership/control model, availability model, allocation rules, consumption semantics, and measurement model remain open.
 
 Resources may be shared across multiple participants, places, buildings, units, phases, communities, providers, or systems. A single resource may therefore serve multiple consumers or contexts without being duplicated for each one.
+
+Resource availability may change over time and must be representable as changing states or conditions. Examples include available, interrupted, restored, reserved, occupied, limited, fully allocated, or unavailable. The exact availability-state taxonomy, transition rules, scheduling model, and concurrency semantics remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
