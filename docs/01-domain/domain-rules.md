@@ -1,60 +1,54 @@
-# Domain Rules
-
-## Purpose
-
-This document records foundational rules that have been established for Royal City.
-
-Rules define what must be true in the domain. They are not implementation constraints.
+# Royal City — Domain Rules
 
 ## Established rules
 
-### R-001 — Identity precedes authorized action
-
-An action performed through Royal City must be attributable to an identity or explicitly defined system actor.
+### R-001 — Identity attribution
+A Royal City action must be attributable to a human identity, approved system credential, or explicitly defined delegated actor.
 
 ### R-002 — Identity does not grant permission
-
-Possessing an identity does not imply permission to perform every action.
-
-Authorization is a separate domain concern.
+Identity is separate from authorization.
 
 ### R-003 — Authorization is contextual
+Authorization may depend on identity, participation, role, authority, target, place, service, time, purpose, conditions, community rules, and Royal City policies.
 
-Authorization may depend on the actor, relationship, target, place, time, purpose, conditions, community rules, or other domain context.
+### R-004 — Community authority
+Property owners hold community authority through community management. Royal City coordinates the community but does not thereby replace community decision-making authority.
 
-The exact policy dimensions remain to be defined.
+### R-005 — Royal City network authority
+Royal City governs the Network Operating System and may enforce requirements necessary for identity integrity, security, network operation, and Royal City participation. This does not automatically govern ordinary community affairs.
 
-### R-004 — Actions have outcomes
+### R-006 — Contextual roles
+Roles arise within participation contexts. One person may hold multiple roles simultaneously, and the same role may carry different authority in different contexts.
 
-A meaningful action must have an observable result, state transition, or explicitly recorded failure where the domain requires recording.
+### R-007 — Bounded delegation
+Authority may be delegated to another participant or approved system. Delegation can be scoped, conditional, time-bound, revoked, and delegated onward within the authority held. No delegate may exceed the authority it possesses.
 
-### R-005 — Authority must be explicit
+### R-008 — Invitation is not general authority
+An invitation grants only the participation/access explicitly authorized by the inviter and applicable rules. Community rules may further restrict the invitation.
 
-Where an action affects another person, community, organization, resource, place, or service, the source of authority must be identifiable.
+### R-009 — Identity survives participation changes
+Ending or suspending one community/provider/service participation does not automatically terminate the person's Royal City identity or unrelated participations.
 
-### R-006 — Voluntary participation
+### R-010 — Controlled identity disclosure
+Royal City identity information is disclosed according to participation context, authorization, legitimate need, and applicable policy. A person may revoke information-access authorization subject to applicable obligations.
 
-Royal City participation is based on voluntary participation subject to the legitimate rules and authorities of the relevant community or service.
+### R-011 — System identities are distinct
+Approved devices/software/automation systems use system credentials distinct from human identities. Connection does not grant unrestricted authority.
 
-### R-007 — Domain before implementation
+### R-012 — Independent operating environments
+A community service provider may manage its own workers, service provision, service details, and operating environment. Integration with Royal City does not make that environment Royal City-owned.
 
+### R-013 — Selectable services
+A community may choose which Royal City services it participates in and may withdraw subject to applicable obligations and network conditions.
+
+### R-014 — Direct individual participation
+A person may participate directly in Royal City-owned services without a community relationship.
+
+### R-015 — Community withdrawal
+Community withdrawal does not terminate the Royal City identities of its people.
+
+### R-016 — Domain before implementation
 Technical convenience cannot silently become a Royal City domain rule.
 
-### R-008 — Unknowns remain unknown
-
-Where the domain has not established a rule, the repository must represent it as an open question rather than inventing a rule.
-
-## Rules still requiring formalization
-
-- identity creation and verification
-- authority and delegation
-- ownership
-- membership
-- access
-- service obligations
-- economic settlement
-- dispute handling
-- privacy and information authority
-- emergency authority
-- governance authority
-- lifecycle and deletion/retention semantics
+### R-017 — Unknowns remain unknown
+Unresolved domain questions must remain explicit rather than being invented.
