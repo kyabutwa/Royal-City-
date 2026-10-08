@@ -2,7 +2,7 @@
  * Royal City canonical persistence boundary.
  *
  * Domain/application code depends on these contracts only.
- * Concrete storage engines (PostgreSQL/Neon/etc.) implement the port.
+ * Concrete storage engines implement the port.
  */
 
 export type Id = string & { readonly __brand: "RoyalCityId" };
