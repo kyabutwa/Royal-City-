@@ -152,6 +152,8 @@ Resource access and usage may also be conditional. Conditions may depend on time
 Resources may depend on other resources. These dependencies can affect availability, operation, service delivery, capacity, or other resource states. Examples include pumps depending on electricity, buildings depending on water and power, internet services depending on network infrastructure and power, and security gates depending on power and network connectivity. The exact dependency types, propagation behavior, failure semantics, recovery semantics, and dependency graph rules remain open.
 
 Royal City should be able to trace and represent the effects of resource failures, limitations, restoration, and other state changes through dependency chains. A change in one resource may affect dependent resources, places, services, or other domain elements, and restoration may enable recovery of affected dependencies. The exact propagation, prioritization, timing, causality, and recovery rules remain open.
+
+Resources may be composed of other resources. A composite resource may consist of component resources whose existence, state, capacity, availability, or operation contributes to the composite resource. Examples include water systems composed of pumps, pipes, tanks, and treatment equipment; power systems composed of generation, storage, conversion, and wiring components; and facilities composed of space and supporting equipment. The exact composition, component lifecycle, dependency distinction, and state aggregation rules remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
