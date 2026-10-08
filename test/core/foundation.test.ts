@@ -131,3 +131,75 @@ test("system credential remains distinct from person identity", async () => {
   assert.equal(credential.systemId, "community-gateway-1");
   assert.equal(repository.read("identities", id("system-credential-1")), undefined);
 });
+
+
+test("relationship records governed type, scope, lifecycle and verification", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const relationship = await import("../../src/core/identity-participation.js").then((m) =>
+    m.createRelationship(repository, {
+      relationshipId: id("relationship-1"),
+      subjectId: id("person-1"),
+      targetId: id("community-1"),
+      kind: "PARTICIPATES_IN",
+      governingDomain: "participation",
+      source: "royal-city",
+      scope: "community:community-1",
+      validFrom: "2026-01-01T00:00:00Z",
+      verification: "VERIFIED"
+    })
+  );
+  assert.equal(relationship.lifecycle, "ACTIVE");
+  assert.equal(relationship.verification, "VERIFIED");
+  assert.equal(relationship.scope, "community:community-1");
+});
+
+test("relationship rejects self-reference and invalid time range", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const createRelationship = (await import("../../src/core/identity-participation.js")).createRelationship;
+  await assert.rejects(createRelationship(repository, {
+    relationshipId: id("relationship-self"),
+    subjectId: id("same"),
+    targetId: id("same"),
+    kind: "INVALID",
+    governingDomain: "test",
+    source: "test",
+    validFrom: "2026-01-02T00:00:00Z"
+  }), { message: "VALIDATION_FAILURE" });
+  await assert.rejects(createRelationship(repository, {
+    relationshipId: id("relationship-time"),
+    subjectId: id("a"),
+    targetId: id("b"),
+    kind: "TEST",
+    governingDomain: "test",
+    source: "test",
+    validFrom: "2026-01-02T00:00:00Z",
+    validUntil: "2026-01-01T00:00:00Z"
+  }), { message: "VALIDATION_FAILURE" });
+});
+
+test("context is scoped to participation and has an effective time window", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  await createPersonIdentity(repository, {
+    personId: id("person-2"),
+    identityId: id("identity-2"),
+    accountId: id("account-2")
+  });
+  await createParticipation(repository, {
+    participationId: id("participation-2"),
+    personId: id("person-2"),
+    serviceId: id("service-2")
+  });
+  const { createContext } = await import("../../src/core/identity-participation.js");
+  const context = await createContext(repository, {
+    contextId: id("context-2"),
+    participationId: id("participation-2"),
+    kind: "SERVICE",
+    purpose: "operate",
+    scope: "service:service-2",
+    effectiveFrom: "2026-01-01T00:00:00Z",
+    effectiveUntil: "2026-02-01T00:00:00Z"
+  });
+  assert.equal(context.status, "ACTIVE");
+  assert.equal(context.scope, "service:service-2");
+  assert.equal(repository.read("contexts", id("context-2"))?.participationId, id("participation-2"));
+});
