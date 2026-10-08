@@ -117,14 +117,14 @@ function validateRecord(
       return;
 
     case "authorizations":
-      requireText(record.actorId);
-      requireText(record.actionType);
-      requireText(record.validFrom);
-      if (record.relationshipId) requireReference(tx, "relationships", record.relationshipId);
-      if (record.contextId) requireReference(tx, "contexts", record.contextId);
+      requireText((record as PersistenceRecordMap["authorizations"]).actorId);
+      requireText((record as PersistenceRecordMap["authorizations"]).actionType);
+      requireText((record as PersistenceRecordMap["authorizations"]).validFrom);
+      if ((record as PersistenceRecordMap["authorizations"]).relationshipId) requireReference(tx, "relationships", (record as PersistenceRecordMap["authorizations"]).relationshipId!);
+      if ((record as PersistenceRecordMap["authorizations"]).contextId) requireReference(tx, "contexts", (record as PersistenceRecordMap["authorizations"]).contextId!);
       if (record.validUntil) {
-        const from = new Date(record.validFrom);
-        const until = new Date(record.validUntil);
+        const from = new Date((record as PersistenceRecordMap["authorizations"]).validFrom);
+        const until = new Date((record as PersistenceRecordMap["authorizations"]).validUntil!);
         if (Number.isNaN(from.getTime()) || Number.isNaN(until.getTime())) {
           throw new Error("INVALID_INPUT");
         }
@@ -133,13 +133,13 @@ function validateRecord(
       return;
 
     case "actions":
-      requireReference(tx, "authorizations", record.authorizationId);
+      requireReference(tx, "authorizations", (record as PersistenceRecordMap["actions"]).authorizationId);
       requireText(record.actorId);
-      requireText(record.operation);
-      requireText(record.createdAt);
-      requireText(record.updatedAt);
-      if (record.idempotencyKey) requireText(record.idempotencyKey);
-      if (!Number.isSafeInteger(record.version) || record.version < 1) {
+      requireText((record as PersistenceRecordMap["actions"]).operation);
+      requireText((record as PersistenceRecordMap["actions"]).createdAt);
+      requireText((record as PersistenceRecordMap["actions"]).updatedAt);
+      if ((record as PersistenceRecordMap["actions"]).idempotencyKey) requireText((record as PersistenceRecordMap["actions"]).idempotencyKey!);
+      if (!Number.isSafeInteger((record as PersistenceRecordMap["actions"]).version) || (record as PersistenceRecordMap["actions"]).version < 1) {
         throw new Error("VALIDATION_FAILURE");
       }
       return;
