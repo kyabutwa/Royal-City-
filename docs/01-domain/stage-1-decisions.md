@@ -207,6 +207,8 @@ Royal City should support notifications for important payment lifecycle events t
 
 Every payment coordinated through Royal City requires explicit authorization by the payer. This requirement applies to all payment forms, including one-time, recurring, scheduled, automatic, split, or otherwise coordinated payments. A previously granted recurring or automatic-payment arrangement does not remove the requirement for payment authorization; each payment must remain attributable to an explicit authorization that covers it. Royal City must not silently create payment authority from mere account connection, participation, access to funds, or possession of personal data. The exact representation, verification, validity period, revocation, re-authorization, and evidence of payment authorization remain open.
 
+A payer may request cancellation of an authorized payment before settlement where cancellation is supported and still possible. A cancellation must not silently alter the payment state: Royal City should record the cancellation request and outcome and notify the relevant authorized participants. If the external financial system has already settled the payment or does not support cancellation, the payment may instead require a refund or other authorized resolution. The exact cancellation window, authority, notification timing, race conditions, and external-provider semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
