@@ -10,9 +10,13 @@ This document describes the Royal City world and domain. It is not software arch
 
 ## Royal City foundational model
 
+**Policy boundary:** Property owners govern community affairs through community management. Royal City governs the Network Operating System and its mandatory identity/security/network requirements; it does not automatically replace community authority.
+
 Royal City has three foundational participation layers:
 
 ### People
+
+A person has one coherent Royal City identity/account across participations and may hold multiple simultaneous roles and participations.
 
 People are human participants in Royal City.
 
@@ -25,6 +29,8 @@ A participating person receives:
 A person may participate through a community or directly through Royal City-owned services.
 
 ### Communities
+
+Property owners hold community authority through community management. A community chooses its Royal City service participation and may withdraw subject to applicable obligations and network conditions.
 
 A Royal City community is a participating residential property or real-estate environment.
 
@@ -50,6 +56,12 @@ It coordinates participating people, communities, services, places, resources, u
 
 Royal City also owns or operates services that people can use directly, including participation that does not require association with a community.
 
+## Service-provider and system participation
+
+Community service providers may manage their own workers, services, details, and operating environments and may serve multiple communities. Approved devices/software/automation systems may use distinct system credentials. People, communities, providers, and Royal City services may delegate bounded authority to approved systems.
+
+Delegation may be scoped, conditional, time-bound, revoked, and delegated onward within held authority.
+
 ## Participation paths
 
 ### Community participation
@@ -69,6 +81,10 @@ Economic activity may introduce:
 `Action → Economic consequence → Transaction → Result / State / Record`
 
 A transaction is not synonymous with an action.
+
+## Identity and authorization boundaries
+
+An invitation grants only explicitly authorized participation/access and does not grant general authority. Community rules can restrict invitations. Royal City network rules can impose mandatory network requirements. Identity information is disclosed according to participation context, authorization, legitimate need, and policy; a person may revoke information-access authorization subject to applicable obligations.
 
 ## Core concepts
 
