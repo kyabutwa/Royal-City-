@@ -38,12 +38,19 @@ test("persistence commits a valid transaction atomically", async () => {
       subjectId: person,
       targetId: community,
       kind: "PARTICIPATES_IN",
+      governingDomain: "participation",
+      source: "test",
+      lifecycle: "ACTIVE",
+      verification: "DECLARED",
       validFrom: "2026-01-01T00:00:00.000Z"
     });
     tx.insert("contexts", {
       id: context,
       participationId: participation,
-      purpose: "community-operation"
+      kind: "COMMUNITY",
+      purpose: "community-operation",
+      effectiveFrom: "2026-01-01T00:00:00.000Z",
+      status: "ACTIVE"
     });
     tx.insert("authorizations", {
       id: authorization,
@@ -158,6 +165,10 @@ test("invalid temporal relationship is rejected", async () => {
         subjectId: id("time-person"),
         targetId: id("time-community"),
         kind: "TEST",
+        governingDomain: "test",
+        source: "test",
+        lifecycle: "ACTIVE",
+        verification: "DECLARED",
         validFrom: "2026-01-02T00:00:00.000Z",
         validUntil: "2026-01-01T00:00:00.000Z"
       });
