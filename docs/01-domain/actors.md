@@ -1,51 +1,29 @@
-# Royal City Participants and Actors
+# Royal City — Participants and Actors
 
-## Foundational participation model
+## People
+Human participants receive one coherent Royal City identity/account. One person can hold multiple simultaneous participations and roles through that identity.
 
-Royal City is organized around three foundational layers:
+People may participate through communities, directly through Royal City-owned services, and through service providers.
 
-### 1. People
+## Communities
+A community is a participating residential property/real-estate environment. It does not receive a person-style identity/account. It receives onboarding credentials connecting its management environment to the Royal City Network Operating System.
 
-People are human participants.
+Property owners hold community authority through community management.
 
-A person receives a Royal City identity and account and manages their participation according to applicable roles, relationships, authority, and authorization.
-
-A person may participate:
-
-- through a participating community; or
-- directly through Royal City-owned services.
-
-### 2. Communities
-
-A community is a participating residential property or real-estate environment.
-
-A community does not receive a person-style identity/account.
-
-It receives community onboarding credentials that connect its management environment to the Royal City Network Operating System.
-
-The community participation connection allows Royal City to coordinate participating management, people, services, places, utilities, economy, and related systems.
-
-### 3. Royal City
-
-Royal City is the Network Operating System itself.
-
-It coordinates the participating ecosystem and may own or operate services that people can use directly.
-
-Royal City is therefore not modeled as a normal person account.
+## Royal City
+Royal City is the Network Operating System itself. It coordinates the ecosystem and can own/operate direct services. It is not a normal person account.
 
 ## Community service providers
+Providers are independent operating participants in community contexts. They can manage their workers, services, service details, and their own operating environments. A provider can participate in multiple communities.
 
-Community service providers participate through the relevant community participation context.
+## Approved systems
+Devices/software/automation systems can participate using system credentials distinct from human identities.
 
-The exact actor/organization model for service providers remains an open Stage 1 policy decision.
+## Delegated automation
+People, communities, service providers, and Royal City services can delegate bounded authority to approved systems. System actions remain attributable to the system credential and authorization context.
 
-## Still open
-
-The following must not be invented until Royal City policy establishes them:
-
-- whether organizations are first-class actors
-- whether a community can independently initiate actions as a domain actor
-- whether service providers require their own identity model
-- whether devices or autonomous systems can independently act
-- delegation and representation semantics
-- machine/system authorization semantics
+## Remaining detailed questions
+- complete organization/provider taxonomy
+- exact system/device classes
+- exact credential lifecycle
+- complete autonomous-action taxonomy
