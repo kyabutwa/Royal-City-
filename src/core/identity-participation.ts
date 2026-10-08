@@ -239,3 +239,108 @@ export async function createContext(
   await repository.transaction((tx) => tx.insert("contexts", context));
   return context;
 }
+
+
+export interface CreateAuthorityCommand {
+  readonly authorityId: Id;
+  readonly principalId: Id;
+  readonly targetId: Id;
+  readonly kind: string;
+  readonly source: string;
+  readonly scope?: string;
+  readonly validFrom: string;
+  readonly validUntil?: string;
+}
+
+export async function createAuthority(
+  repository: PersistenceRepository,
+  command: CreateAuthorityCommand
+): Promise<AuthorityRecord> {
+  if (!command.authorityId.trim() || !command.principalId.trim() || !command.targetId.trim() ||
+      !command.kind.trim() || !command.source.trim()) {
+    throw new Error("INVALID_INPUT");
+  }
+  const validFrom = canonicalTime(command.validFrom);
+  const validUntil = command.validUntil ? canonicalTime(command.validUntil) : undefined;
+  if (validUntil && new Date(validUntil) <= new Date(validFrom)) throw new Error("VALIDATION_FAILURE");
+
+  const authority: AuthorityRecord = {
+    id: command.authorityId,
+    principalId: command.principalId,
+    targetId: command.targetId,
+    kind: command.kind.trim(),
+    source: command.source.trim(),
+    ...(command.scope ? { scope: command.scope.trim() } : {}),
+    validFrom,
+    ...(validUntil ? { validUntil } : {}),
+    lifecycle: "ACTIVE"
+  };
+  await repository.transaction((tx) => tx.insert("authorities", authority));
+  return authority;
+}
+
+export interface EvaluateAuthorizationCommand {
+  readonly authorizationId: Id;
+  readonly requesterId: Id;
+  readonly action: string;
+  readonly targetId: Id;
+  readonly contextId?: Id;
+  readonly authorityId?: Id;
+  readonly decidedAt: string;
+  readonly expiresAt?: string;
+}
+
+export async function evaluateAuthorization(
+  repository: PersistenceRepository,
+  command: EvaluateAuthorizationCommand
+): Promise<AuthorizationRecord> {
+  if (!command.authorizationId.trim() || !command.requesterId.trim() ||
+      !command.action.trim() || !command.targetId.trim()) {
+    throw new Error("INVALID_INPUT");
+  }
+
+  const now = new Date(canonicalTime(command.decidedAt));
+  let decision: AuthorizationDecision = "DENY";
+  let reason = "NO_AUTHORITY";
+
+  if (command.authorityId) {
+    const authority = repository.read("authorities", command.authorityId);
+    if (!authority) {
+      reason = "AUTHORITY_NOT_FOUND";
+    } else {
+      const starts = new Date(authority.validFrom);
+      const ends = authority.validUntil ? new Date(authority.validUntil) : undefined;
+      const inWindow = now >= starts && (!ends || now < ends);
+      const active = authority.lifecycle === "ACTIVE";
+      const principalMatches = authority.principalId === command.requesterId;
+      const targetMatches = authority.targetId === command.targetId;
+      if (active && inWindow && principalMatches && targetMatches) {
+        decision = "ALLOW";
+        reason = "AUTHORITY_MATCH";
+      } else {
+        reason = "AUTHORITY_NOT_APPLICABLE";
+      }
+    }
+  }
+
+  const decidedAt = now.toISOString();
+  const expiresAt = command.expiresAt ? canonicalTime(command.expiresAt) : undefined;
+  if (expiresAt && new Date(expiresAt) <= now) throw new Error("VALIDATION_FAILURE");
+
+  const authorization: AuthorizationRecord = {
+    id: command.authorizationId,
+    requesterId: command.requesterId,
+    action: command.action.trim(),
+    targetId: command.targetId,
+    ...(command.contextId ? { contextId: command.contextId } : {}),
+    ...(command.authorityId ? { authorityId: command.authorityId } : {}),
+    decision,
+    lifecycle: decision === "ALLOW" ? "ACTIVE" : "CLOSED",
+    reason,
+    decidedAt,
+    ...(expiresAt ? { expiresAt } : {})
+  };
+
+  await repository.transaction((tx) => tx.insert("authorizations", authorization));
+  return authorization;
+}
