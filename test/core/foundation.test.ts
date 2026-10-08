@@ -292,7 +292,8 @@ test("action rejects denied authorization and conflicting idempotency reuse", as
   await createAuthority(repository, { authorityId: id("authority-idem"), principalId: id("person-deny"), targetId: id("merchant-idem"), kind: "PAY", source: "test", validFrom: "2026-01-01T00:00:00Z" });
   await evaluateAuthorization(repository, { authorizationId: id("authorization-idem"), requesterId: id("person-deny"), action: "PAY", targetId: id("merchant-idem"), authorityId: id("authority-idem"), decidedAt: "2026-06-01T00:00:00Z" });
   await requestAction(repository, { actionId: id("action-idem"), actorId: id("person-deny"), authorizationId: id("authorization-idem"), operation: "PAY", idempotencyKey: "pay-conflict" });
-  await assert.rejects(requestAction(repository, { actionId: id("action-idem-2"), actorId: id("person-deny"), authorizationId: id("authorization-idem"), operation: "PAY_OTHER", idempotencyKey: "pay-conflict" }), { message: "IDEMPOTENCY_CONFLICT" });
+  await evaluateAuthorization(repository, { authorizationId: id("authorization-other"), requesterId: id("person-deny"), action: "PAY_OTHER", targetId: id("merchant-idem"), authorityId: id("authority-idem"), decidedAt: "2026-06-01T00:00:00Z" });
+  await assert.rejects(requestAction(repository, { actionId: id("action-idem-2"), actorId: id("person-deny"), authorizationId: id("authorization-other"), operation: "PAY_OTHER", idempotencyKey: "pay-conflict" }), { message: "IDEMPOTENCY_CONFLICT" });
 });
 
 test("execution records EXECUTING and final outcome with events", async () => {
