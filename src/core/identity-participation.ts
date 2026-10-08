@@ -5,6 +5,8 @@ import type {
   Id,
   IdentityRecord,
   ParticipationRecord,
+  RelationshipRecord,
+  ContextRecord,
   PersistenceRepository,
   PersonRecord,
   SystemCredentialRecord
