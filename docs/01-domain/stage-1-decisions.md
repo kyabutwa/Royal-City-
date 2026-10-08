@@ -123,10 +123,13 @@ Royal City may also represent temporary places created for a limited period or i
 Royal City may also represent virtual or non-physical places. These may include online community spaces, digital service areas, virtual meeting rooms, administrative workspaces, digital marketplace areas, and Royal City system environments. The exact virtual-place taxonomy and relationship to physical places remain open.
 
 ## D-108 — Resource model
-**Status: Open**
+**Status: Resolved at foundational level**
 
-Detailed resource, asset, facility, infrastructure, and controllable-thing semantics remain to be defined.
+Royal City resources may represent anything that people, communities, providers, or approved systems can use, access, consume, operate, allocate, or depend on.
 
+Representative examples include water, electricity, parking spaces, rooms, equipment, vehicles, network capacity, staff/service capacity, money or funds, storage, land or space, time slots, digital resources, and infrastructure capacity.
+
+The exact resource taxonomy, lifecycle, ownership/control model, availability model, allocation rules, consumption semantics, and measurement model remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
