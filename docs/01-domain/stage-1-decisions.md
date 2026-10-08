@@ -179,9 +179,13 @@ Detailed service lifecycle remains open.
 People, approved systems, delegates, and automated systems may perform authorized actions. System actions must remain attributable to system credentials and their authority context. Complete action taxonomy/lifecycle remains open.
 
 ## D-111 — Economic model
-**Status: Open**
+**Status: Resolved at foundational level**
 
-Commitment, settlement, finality, reversal, refund, dispute, and economic authority remain to be defined.
+Royal City has a native economic coordination layer within its ecosystem. It may represent and coordinate economic concepts and activities such as money and balances, payments and transfers, prices and fees, invoices and bills, credits and debts, transactions, community contributions, provider compensation, budgets, revenue, and expenses.
+
+Royal City's economic layer is part of the ecosystem's operating model, but Royal City is not itself a bank, mobile-money service such as M-Pesa, or general financial institution. Royal City may connect to and coordinate with external financial, payment, banking, mobile-money, or other regulated economic systems where appropriate.
+
+The exact monetary instruments, settlement model, commitment and finality semantics, reversals, refunds, disputes, financial authority, custody, regulatory boundaries, external-system integration, and other detailed economic rules remain open.
 
 ## D-112 — Record model
 **Status: Partially resolved**
