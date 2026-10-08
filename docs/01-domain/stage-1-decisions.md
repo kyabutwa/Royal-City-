@@ -211,6 +211,8 @@ A payer may request cancellation of an authorized payment before settlement wher
 
 A failed payment must be recorded as a failed payment outcome and must not be represented as completed or settled. Royal City should notify the relevant authorized participants of the failure and preserve the distinction between an attempted payment, a failed payment, and a completed or settled payment. Failure may result from insufficient funds, provider rejection, unavailable services, network failure, authorization failure, or other conditions. The exact failure taxonomy, retry behavior, notification timing, reconciliation, and recovery semantics remain open.
 
+Authorized payment requests should expire automatically when they remain incomplete beyond their applicable authorization period. Expiration must prevent an expired authorization from being treated as a current authorization for settlement. After expiration, the payer must explicitly re-authorize the payment before it can proceed. The exact expiry duration, whether it varies by payment type or rule, warning/notification behavior, extension or re-authorization process, and interaction with external payment systems remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
