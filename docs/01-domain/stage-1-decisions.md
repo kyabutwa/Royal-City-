@@ -197,6 +197,8 @@ Authorized participants may create payment requests through Royal City for legit
 
 Royal City may support authorized payment splitting or allocation, where one payment is allocated among multiple authorized recipients, destinations, services, or obligations. Such allocation must be governed by an applicable authorization and allocation rule; Royal City must not distribute funds to recipients merely because it can technically route the payment. The allocation may be defined by the payer, an authorized recipient, a community rule, a service arrangement, or another authorized economic relationship. Actual settlement remains subject to the connected external financial system and applicable rules. The exact split-allocation lifecycle, precedence, rounding, failure handling, authorization changes, and reconciliation semantics remain open.
 
+Royal City may support refunds and refund coordination for authorized payments when an economic obligation or transaction requires money to be returned. A refund may be initiated by an authorized participant or according to an applicable authorized rule, and Royal City may coordinate the refund request, authorization, status, and outcome with the connected external financial system. Royal City does not need to hold the original funds in order to coordinate a refund; the actual return and settlement of funds may be performed by the external financial system. The exact refund eligibility, authorization, timing, partial-refund, failure, reversal, dispute, and reconciliation semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
