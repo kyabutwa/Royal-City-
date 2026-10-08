@@ -138,6 +138,8 @@ Resource availability may change over time and must be representable as changing
 Resources may also have measurable quantities or capacities. Royal City must be able to represent values such as volume, power, count, bandwidth, storage capacity, occupancy capacity, or available service-hours. The exact units, measurement model, precision, aggregation, and capacity semantics remain open.
 
 Resources may be consumed or depleted through authorized actions. Consumption can reduce a resource's available quantity or capacity over time, such as water, electricity/energy, fuel, storage, service-hours, or inventory. The exact consumption, replenishment, reservation, accounting, and measurement semantics remain open.
+
+Resources may also be replenished, restored, replenished through supply, or have their available quantity or capacity increased. Examples include refilling water, charging batteries, restocking inventory, increasing storage capacity, adding staff capacity, or adding electricity generation capacity. The exact replenishment, restoration, expansion, accounting, and measurement semantics remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
