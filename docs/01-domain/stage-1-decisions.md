@@ -100,7 +100,9 @@ Example:
 
 `Royal City → Tsavo Royal Suburb Roysambu (Community) → Phase → Property/Plot → Building → Floor → Unit → Room`
 
-The exact place types, containment rules, spatial relationships, and treatment of shared/non-contained places remain open.
+Places may also have shared relationships: a place or facility may serve, connect, support, or be associated with multiple other places without being contained by only one of them. This supports shared roads, gates, parking, pools, utilities, security facilities, infrastructure, and other common environments.
+
+The exact place types, containment rules, spatial relationship vocabulary, and treatment of shared/non-contained places remain open.
 
 ## D-108 — Resource model
 **Status: Open**
