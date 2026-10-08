@@ -193,6 +193,8 @@ A person may associate multiple external payment sources or financial accounts w
 
 Royal City may support recurring, scheduled, or automatic payments when the participant has explicitly authorized the applicable payment arrangement. Examples include recurring community fees, utility bills, subscriptions, scheduled service payments, and installment payments. Automatic payment authorization may define the applicable amount or pricing rule, payment source, schedule or trigger, duration, limits, and conditions. The actual movement and settlement of funds may continue to be performed by the connected external financial system. The exact recurring-payment lifecycle, authorization renewal, cancellation, insufficient-funds handling, changes in amount, notifications, retries, disputes, and reconciliation remain open.
 
+Authorized participants may create payment requests through Royal City for legitimate economic activities such as community fees, service charges, purchases, bookings, invoices, contributions, or other authorized obligations. A payment request may identify the requesting participant, payer or intended payer, amount or applicable pricing rule, purpose, due date or trigger, and other relevant conditions. A payment request does not itself move funds; the payer must authorize the applicable payment and settlement may be performed by a connected external financial system. The exact payment-request lifecycle, acceptance, rejection, expiration, modification, cancellation, dispute, and record semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
