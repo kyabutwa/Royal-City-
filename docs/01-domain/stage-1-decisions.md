@@ -199,6 +199,8 @@ Royal City may support authorized payment splitting or allocation, where one pay
 
 Royal City may support refunds and refund coordination for authorized payments when an economic obligation or transaction requires money to be returned. A refund may be initiated by an authorized participant or according to an applicable authorized rule, and Royal City may coordinate the refund request, authorization, status, and outcome with the connected external financial system. Royal City does not need to hold the original funds in order to coordinate a refund; the actual return and settlement of funds may be performed by the external financial system. The exact refund eligibility, authorization, timing, partial-refund, failure, reversal, dispute, and reconciliation semantics remain open.
 
+Royal City may support payment disputes as a first-class economic process. A dispute may address matters such as an incorrect charge, unauthorized payment, non-delivery or inadequate delivery of a service, duplicate charging, an unresolved refund, or another authorized economic disagreement. Royal City may coordinate dispute initiation, evidence, notifications, participant responses, status, escalation, and outcomes, subject to the applicable authority and rules. Where financial settlement or reversal is required, the appropriate authorized party and/or connected external financial system may perform the actual financial resolution. The exact dispute categories, evidence requirements, timelines, decision authority, escalation, provisional actions, resolution, appeal, and reconciliation semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
