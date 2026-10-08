@@ -55,7 +55,7 @@ export interface CommunityCredentialRecord {
 
 export interface SystemCredentialRecord {
   readonly id: Id;
-  readonly systemId: Id;
+  readonly systemId: string;
   readonly status: "ACTIVE" | "REVOKED" | "EXPIRED";
 }
 
