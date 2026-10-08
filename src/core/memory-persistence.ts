@@ -145,19 +145,19 @@ function validateRecord(
       return;
 
     case "events":
-      requireReference(tx, "actions", record.actionId);
-      requireText(record.type);
-      requireText(record.source);
-      requireText(record.occurredAt);
-      if (!Number.isSafeInteger(record.version) || record.version < 1) {
+      requireReference(tx, "actions", (record as PersistenceRecordMap["events"]).actionId);
+      requireText((record as PersistenceRecordMap["events"]).type);
+      requireText((record as PersistenceRecordMap["events"]).source);
+      requireText((record as PersistenceRecordMap["events"]).occurredAt);
+      if (!Number.isSafeInteger((record as PersistenceRecordMap["events"]).version) || (record as PersistenceRecordMap["events"]).version < 1) {
         throw new Error("VALIDATION_FAILURE");
       }
       return;
 
     case "evidence":
       requireText(record.source);
-      requireText(record.recordedAt);
-      if (record.eventId) requireReference(tx, "events", record.eventId);
+      requireText((record as PersistenceRecordMap["evidence"]).recordedAt);
+      if ((record as PersistenceRecordMap["evidence"]).eventId) requireReference(tx, "events", (record as PersistenceRecordMap["evidence"]).eventId!);
       return;
   }
 }
