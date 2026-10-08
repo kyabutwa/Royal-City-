@@ -203,3 +203,71 @@ test("context is scoped to participation and has an effective time window", asyn
   assert.equal(context.scope, "service:service-2");
   assert.equal(repository.read("contexts", id("context-2"))?.participationId, id("participation-2"));
 });
+
+
+test("authority is scoped to principal, target and time", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const { createAuthority } = await import("../../src/core/identity-participation.js");
+  const authority = await createAuthority(repository, {
+    authorityId: id("authority-1"),
+    principalId: id("person-1"),
+    targetId: id("community-1"),
+    kind: "MANAGE",
+    source: "community-management",
+    scope: "community:community-1",
+    validFrom: "2026-01-01T00:00:00Z",
+    validUntil: "2027-01-01T00:00:00Z"
+  });
+  assert.equal(authority.lifecycle, "ACTIVE");
+  assert.equal(authority.scope, "community:community-1");
+});
+
+test("authorization allows only when supplied authority matches requester, target and time", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const { createAuthority, evaluateAuthorization } = await import("../../src/core/identity-participation.js");
+  await createAuthority(repository, {
+    authorityId: id("authority-2"),
+    principalId: id("person-2"),
+    targetId: id("community-2"),
+    kind: "MANAGE",
+    source: "community-management",
+    validFrom: "2026-01-01T00:00:00Z",
+    validUntil: "2027-01-01T00:00:00Z"
+  });
+  const allowed = await evaluateAuthorization(repository, {
+    authorizationId: id("auth-allow"),
+    requesterId: id("person-2"),
+    action: "UPDATE_COMMUNITY",
+    targetId: id("community-2"),
+    authorityId: id("authority-2"),
+    decidedAt: "2026-06-01T00:00:00Z"
+  });
+  assert.equal(allowed.decision, "ALLOW");
+  assert.equal(allowed.lifecycle, "ACTIVE");
+
+  const denied = await evaluateAuthorization(repository, {
+    authorizationId: id("auth-deny"),
+    requesterId: id("person-3"),
+    action: "UPDATE_COMMUNITY",
+    targetId: id("community-2"),
+    authorityId: id("authority-2"),
+    decidedAt: "2026-06-01T00:00:00Z"
+  });
+  assert.equal(denied.decision, "DENY");
+  assert.equal(denied.lifecycle, "CLOSED");
+});
+
+test("authorization denies when authority is missing or expired", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const { evaluateAuthorization } = await import("../../src/core/identity-participation.js");
+  const missing = await evaluateAuthorization(repository, {
+    authorizationId: id("auth-missing"),
+    requesterId: id("person-1"),
+    action: "ACCESS",
+    targetId: id("facility-1"),
+    authorityId: id("missing-authority"),
+    decidedAt: "2026-06-01T00:00:00Z"
+  });
+  assert.equal(missing.decision, "DENY");
+  assert.equal(missing.reason, "AUTHORITY_NOT_FOUND");
+});
