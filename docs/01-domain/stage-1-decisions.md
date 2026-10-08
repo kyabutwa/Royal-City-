@@ -205,6 +205,8 @@ Royal City should create a payment record and proof of outcome for each coordina
 
 Royal City should support notifications for important payment lifecycle events to the relevant authorized participants. Events may include payment requests, authorization, successful or failed processing, refunds, dispute initiation and resolution, and upcoming or triggered automatic payments. Notifications must respect identity, authorization, privacy, communication preferences, and applicable rules. The exact notification channels, timing, delivery guarantees, content, escalation, suppression, and preference semantics remain open.
 
+Every payment coordinated through Royal City requires explicit authorization by the payer. This requirement applies to all payment forms, including one-time, recurring, scheduled, automatic, split, or otherwise coordinated payments. A previously granted recurring or automatic-payment arrangement does not remove the requirement for payment authorization; each payment must remain attributable to an explicit authorization that covers it. Royal City must not silently create payment authority from mere account connection, participation, access to funds, or possession of personal data. The exact representation, verification, validity period, revocation, re-authorization, and evidence of payment authorization remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
