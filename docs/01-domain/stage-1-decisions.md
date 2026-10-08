@@ -148,6 +148,8 @@ A resource may have an owner and/or controlling authority distinct from the part
 Resources may have access and usage rules that determine who or what may access, use, reserve, operate, or consume them. These rules may differ by role, relationship, authorization, place, context, time, or other conditions. The exact policy model and precedence remain open.
 
 Resource access and usage may also be conditional. Conditions may depend on time, capacity, reservations, supervision, emergencies, required qualifications or training, operating status, place, context, or other domain conditions. The exact condition model, evaluation rules, precedence, and conflict handling remain open.
+
+Resources may depend on other resources. These dependencies can affect availability, operation, service delivery, capacity, or other resource states. Examples include pumps depending on electricity, buildings depending on water and power, internet services depending on network infrastructure and power, and security gates depending on power and network connectivity. The exact dependency types, propagation behavior, failure semantics, recovery semantics, and dependency graph rules remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
