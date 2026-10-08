@@ -7,6 +7,9 @@ import type {
   ParticipationRecord,
   RelationshipRecord,
   ContextRecord,
+  AuthorityRecord,
+  AuthorizationRecord,
+  AuthorizationDecision,
   PersistenceRepository,
   PersonRecord,
   SystemCredentialRecord
