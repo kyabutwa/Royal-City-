@@ -140,10 +140,10 @@ test("action idempotency can find an existing consequential action", async () =>
     });
   });
 
-  assert.equal(
-    repository.transaction((tx) => tx.findActionByIdempotencyKey("same-key")).then((r) => r?.id),
-    id("idem-action")
+  const found = await repository.transaction((tx) =>
+    tx.findActionByIdempotencyKey("same-key")
   );
+  assert.equal(found?.id, id("idem-action"));
 });
 
 test("invalid temporal relationship is rejected", async () => {
