@@ -120,6 +120,8 @@ Place structures and relationships may change over time. Royal City must be able
 
 Royal City may also represent temporary places created for a limited period or in response to planned or unpredictable circumstances. Examples include temporary construction areas, event spaces, security checkpoints, emergency shelters, temporary markets, and temporary parking areas. Their lifecycle, effective period, transition, and retirement mechanics remain open.
 
+Royal City may also represent virtual or non-physical places. These may include online community spaces, digital service areas, virtual meeting rooms, administrative workspaces, digital marketplace areas, and Royal City system environments. The exact virtual-place taxonomy and relationship to physical places remain open.
+
 ## D-108 — Resource model
 **Status: Open**
 
