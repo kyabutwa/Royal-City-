@@ -1,317 +1,131 @@
 # Royal City — Stage 1 Domain Decisions
 
 ## Purpose
+This document records explicit Royal City domain decisions. Unresolved details remain open and must not be invented.
 
-This document records the decisions required to close the Royal City World & Domain Model.
+## Resolved foundational decisions
 
-A decision is only marked **Resolved** when it follows directly from an established Royal City principle or has been explicitly chosen as a domain rule.
+### D-001 — Person identity
+A participating person has one coherent Royal City identity and account. The identity belongs to the person and remains independent of any single community, provider, or service participation. One person may hold multiple simultaneous participations and roles.
 
-A decision is **Open** when resolving it would require inventing a product rule.
+### D-002 — Identity and authorization
+Identity establishes who is participating. Authorization determines what that participant or an approved system may do in a particular context. Identity does not itself grant permission.
 
----
+### D-003 — Actions
+Meaningful interaction is represented as an attributable action governed by applicable authority and authorization.
 
-## D-001 — People use a unified Royal City identity and account
+### D-004 — Relationships
+Relationships and participations are first-class domain concepts. A person can participate in multiple communities, providers, and Royal City services simultaneously.
 
-**Status:** Resolved
+### D-005 — Authority versus authorization
+Authority is the basis for exercising a power, responsibility, or control. Authorization applies that authority to a specific action.
 
-A person participating in Royal City receives a Royal City identity and account through which the person manages their participation.
+### D-006 — Community authority
+Property owners hold community authority and exercise it through community management. Community authority is not automatically individual authority. Royal City coordinates the community but does not thereby replace ordinary community decision-making authority.
 
-The person's participation is governed by their applicable role, relationship, authority, and authorization.
+### D-007 — Transactions
+Economic transactions are distinct from generic actions. The complete economic model remains open.
 
-Identity does not itself confer permission.
+### D-008 — Services
+A service is distinct from its execution, provider, request, authorization, result, and transaction.
 
----
+### D-009 — Domain state
+Valid state transitions require domain justification; implementation storage does not define domain truth.
 
-## D-002 — Authorization is separate from identity
+### D-010 — External operating environments
+Community/provider operating environments and other external systems do not become Royal City-owned merely because they integrate with Royal City.
 
-**Status:** Resolved
+### D-011 — Voluntary participation
+Participation is voluntary subject to legitimate applicable rules. A community chooses which Royal City services it uses and may withdraw, subject to applicable obligations and Royal City network conditions. People can participate directly through Royal City-owned services without a community.
 
-Authorization determines whether an identity may perform a particular action in a particular context.
-
-Therefore:
-
-`Identity ≠ Authorization`
-
----
-
-## D-003 — Actions are the universal interaction mechanism
-
-**Status:** Resolved
-
-Meaningful interaction with Royal City is modeled as an action attributable to a participant through the applicable identity/credentials and governed by authorization.
-
----
-
-## D-004 — Relationships are first-class domain concepts
-
-**Status:** Resolved
-
-Relationships are not merely metadata.
-
-They provide participation context between people, communities, service providers, Royal City services, places, resources, and other domain elements.
-
-The exact relationship taxonomy remains open.
-
----
-
-## D-005 — Authority is distinct from authorization
-
-**Status:** Resolved
-
-Authority is the basis from which an actor or participant may possess a power, responsibility, or control.
-
-Authorization is the decision applying that authority to a specific action.
-
-Therefore:
-
-`Authority ≠ Authorization`
-
----
-
-## D-006 — Ownership and control are distinct
-
-**Status:** Resolved
-
-Royal City must not assume that ownership, control, access, responsibility, and authority are identical.
-
-Their exact semantics remain open.
-
----
-
-## D-007 — A transaction is not every action
-
-**Status:** Resolved
-
-Economic transactions are a distinct domain concept.
-
-An action may have no economic consequence.
-
-A transaction may arise from one or more economic actions or commitments.
-
-The exact transaction model remains open.
-
----
-
-## D-008 — Service is distinct from its execution
-
-**Status:** Resolved
-
-A service represents an available capability.
-
-Provider, request, authorization, execution, result, and transaction are separate concerns.
-
----
-
-## D-009 — Domain state is governed by domain rules
-
-**Status:** Resolved
-
-State cannot be defined merely by what software can store.
-
-A valid state transition must be justified by domain rules and an applicable action.
-
----
-
-## D-010 — External systems are not automatically Royal City domain objects
-
-**Status:** Resolved
-
-Integration does not automatically make an external entity part of the Royal City domain.
-
-Royal City must distinguish its own coordination authority from externally authoritative systems.
-
----
-
-## D-011 — Participation is voluntary
-
-**Status:** Resolved
-
-Participation in Royal City is voluntary, subject to legitimate rules and authority applicable to the participant and context.
-
----
-
-## D-012 — No implementation inference
-
-**Status:** Resolved
-
-Software architecture must not silently resolve an unresolved Royal City domain question.
-
----
-
-# Decisions requiring explicit Royal City policy
+### D-012 — No implementation inference
+Software architecture must not silently invent unresolved domain rules.
 
 ## D-101 — Participant and actor taxonomy
+**Status: Resolved at foundational level**
 
-**Status:** Partially resolved
+Established:
+- People: Royal City identity/account.
+- Communities: residential property/real-estate environments using onboarding credentials, not person-style accounts.
+- Royal City: the Network Operating System itself.
+- Community service providers: independent participants that may operate their own environments and serve multiple communities.
+- Approved devices/systems: machine participants using system credentials.
+- Delegated/automated actors: approved systems may act within authority delegated by a person, community, provider, or Royal City service.
 
-The current policy establishes three foundational participation layers:
+Detailed organizational and machine classifications remain open.
 
-1. **People** — human participants with Royal City identity and account.
-2. **Communities** — participating residential properties/real-estate environments. A community does not receive a person-style identity/account; it receives credentials for onboarding and connecting its management environment to the Royal City Network Operating System.
-3. **Royal City** — the operating system itself, coordinating the ecosystem and operating Royal City-owned services.
+## D-102 — Identity and credential lifecycle
+**Status: Resolved at policy level; detailed mechanics open**
 
-Community service providers can participate through community participation.
+A person's identity remains across participation changes. Royal City may suspend network participation of an identity under identity/security/network policy without erasing the identity. Community participation may be independently suspended or terminated. Communities use onboarding credentials; systems use system credentials.
 
-The following remain open and must not be invented:
-
-- whether organizations/service providers are first-class actors or represented through another participant model
-- whether approved devices/systems can independently act
-- the exact actor semantics for delegated or automated actions
-
----
-
-## D-102 — Identity lifecycle
-
-**Status:** Partially resolved
-
-A person has a Royal City identity and account for managing participation.
-
-A community does not have a person-style identity/account; it receives community onboarding credentials for connection to the Royal City Network Operating System.
-
-Royal City itself is the operating system and is not modeled as a normal participant account.
-
-Still open:
-
-- identity creation and verification
-- identity attributes
-- suspension/recovery/revocation
-- account lifecycle
-- compromised credentials
-- identity succession
-- exact community credential lifecycle
-
----
+Issuance, verification, recovery, rotation, and compromise mechanics remain open.
 
 ## D-103 — Relationship taxonomy
+**Status: Partially resolved**
 
-**Status:** Open
-
-The exact first-class relationship types and the authority/access effects they create remain to be defined.
-
----
+Established: person-community, person-provider, person-Royal-City-service, community-provider, principal-delegate, and principal-system participation relationships. Complete vocabulary remains open.
 
 ## D-104 — Authority model
+**Status: Resolved at foundational boundary**
 
-**Status:** Open
+Property owners exercise community authority through community management. Royal City governs the Network Operating System, including identity integrity, security, and mandatory network participation requirements. Royal City does not thereby acquire ordinary authority over community affairs.
 
-Royal City must define the legitimate sources of authority and how conflicting legitimate authorities interact.
-
----
+Detailed authority categories and conflict precedence remain open.
 
 ## D-105 — Delegation
+**Status: Resolved at foundational level**
 
-**Status:** Open
-
-Royal City must define whether and how authority can be delegated, including scope, nesting, expiry, revocation, and consequences.
-
----
+Authority may be delegated to another person, external participant, or approved system. Delegation may be scoped, conditional, time-bound, revoked, and delegated onward. A delegate cannot delegate or exercise more authority than it possesses.
 
 ## D-106 — Community model
+**Status: Resolved at foundational level**
 
-**Status:** Resolved at the foundational definition; governance remains open
+A community is a participating residential property/real-estate environment. Property owners exercise authority through community management. The community chooses its Royal City service participation and may withdraw. Community withdrawal does not terminate people's Royal City identities.
 
-A Royal City community is a participating residential property or real-estate environment.
-
-A community connects to Royal City through community onboarding credentials and the Royal City Network Operating System.
-
-Through that participation, Royal City coordinates the community's participating management, people, services, places, utilities, economy, and related systems.
-
-Still open:
-
-- community ownership/control semantics
-- membership rules
-- community governance
-- rule creation/change
-- conflict resolution
-- community service-provider authority
-
----
+Detailed governance, ownership structures, membership taxonomy, and disputes remain open.
 
 ## D-107 — Place hierarchy
+**Status: Open**
 
-**Status:** Open
-
-The exact hierarchy and semantics of places, properties, buildings, units, facilities, infrastructure, and related physical elements remain to be defined.
-
----
+Property/building/unit/facility/infrastructure hierarchy remains to be defined.
 
 ## D-108 — Resource model
+**Status: Open**
 
-**Status:** Open
-
-The exact distinction between resources, assets, facilities, infrastructure, services, and other usable/control-able things remains to be defined.
-
----
+Detailed resource, asset, facility, infrastructure, and controllable-thing semantics remain to be defined.
 
 ## D-109 — Service model
+**Status: Resolved at participation boundary**
 
-**Status:** Partially resolved
+Services can be provided through communities/providers or directly by Royal City. Providers may manage workers, service delivery, service details, and their own operating environments. Providers may serve multiple communities, with each participation separately governed. Royal City-owned services may have their own participation rules within Royal City policy.
 
-Royal City coordinates services offered through two foundational participation paths:
-
-1. services made available through participating communities and their onboarded service providers;
-2. services owned or operated by Royal City itself, available to people participating directly in Royal City without community association.
-
-The detailed provider, consumer, request, obligation, execution, completion, cancellation, and failure semantics remain open.
-
----
+Detailed service lifecycle remains open.
 
 ## D-110 — Action model
+**Status: Partially resolved**
 
-**Status:** Open
-
-The universal action concept is resolved, but the final action taxonomy, lifecycle, and requirements for different action classes remain open.
-
----
+People, approved systems, delegates, and automated systems may perform authorized actions. System actions must remain attributable to system credentials and their authority context. Complete action taxonomy/lifecycle remains open.
 
 ## D-111 — Economic model
+**Status: Open**
 
-**Status:** Open
-
-Royal City must define which economic activity is internal, which is externally settled, and the semantics of commitment, settlement, finality, reversal, refund, dispute, and economic authority.
-
----
+Commitment, settlement, finality, reversal, refund, dispute, and economic authority remain to be defined.
 
 ## D-112 — Record model
+**Status: Partially resolved**
 
-**Status:** Open
-
-Royal City must define authoritative records, correction, retention, deletion, immutability where required, and participant visibility.
-
----
+Significant participation, authorization, delegation, suspension/revocation, and action outcomes require appropriate records where recording is required. Ending a relationship does not erase required historical records. Complete retention/correction/deletion/visibility policy remains open.
 
 ## D-113 — Emergency authority
+**Status: Open**
 
-**Status:** Open
-
-Royal City must explicitly decide whether extraordinary authority exists and, if so, its scope, activation, recording, review, and expiry.
-
----
+Extraordinary authority, if any, remains to be explicitly defined.
 
 ## D-114 — External boundary
+**Status: Partially resolved**
 
-**Status:** Partially resolved
-
-Royal City is the Network Operating System that coordinates participating people, communities, services, places, utilities, economic activity, and connected systems.
-
-Royal City-owned services are part of Royal City's direct service domain.
-
-Community-owned/operated services and external systems may participate through community or external relationships without automatically becoming Royal City-owned.
-
-Still open:
-
-- exact authority boundary
-- externally authoritative systems
-- control versus coordination
-- ownership/control semantics at integration boundaries
-
----
+Royal City coordinates the ecosystem and governs its Network Operating System. Community/provider environments may participate without becoming Royal City-owned. Approved external participants and systems may receive bounded delegated authority. Exact ownership/control and external-authority taxonomy remains open.
 
 ## Completion rule
-
-Stage 1 closes only when all **D-101 through D-114** are either:
-
-1. explicitly resolved as Royal City domain policy, or
-2. deliberately declared non-domain concerns.
-
-No implementation decision may substitute for a missing domain decision.
+Stage 1 closes only when D-101 through D-114 are either explicitly resolved as policy or deliberately declared non-domain concerns.
