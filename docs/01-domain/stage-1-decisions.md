@@ -102,7 +102,19 @@ Example:
 
 Places may also have shared relationships: a place or facility may serve, connect, support, or be associated with multiple other places without being contained by only one of them. This supports shared roads, gates, parking, pools, utilities, security facilities, infrastructure, and other common environments.
 
-The exact place types, containment rules, spatial relationship vocabulary, and treatment of shared/non-contained places remain open.
+Royal City should support multiple spatial/place relationships rather than treating containment as the only relationship. Examples include:
+
+- contains
+- part of
+- adjacent to
+- connected to
+- serves
+- accessed through
+- located within
+- shared by
+- covers/serves an area
+
+This relationship vocabulary is illustrative; the complete taxonomy and exact semantics remain open.
 
 ## D-108 — Resource model
 **Status: Open**
