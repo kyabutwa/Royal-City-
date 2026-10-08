@@ -87,12 +87,14 @@ function validateRecord(
       requireText((record as PersistenceRecordMap["systemCredentials"]).systemId);
       return;
 
-    case "participations":
-      requireReference(tx, "persons", (record as PersistenceRecordMap["participations"]).personId);
-      if ((record as PersistenceRecordMap["participations"]).communityId) requireReference(tx, "communities", (record as PersistenceRecordMap["participations"]).communityId);
-      if ((record as PersistenceRecordMap["participations"]).providerId) requireText((record as PersistenceRecordMap["participations"]).providerId);
-      if ((record as PersistenceRecordMap["participations"]).serviceId) requireText((record as PersistenceRecordMap["participations"]).serviceId);
+    case "participations": {
+      const value = record as PersistenceRecordMap["participations"];
+      requireReference(tx, "persons", value.personId);
+      if (value.communityId) requireReference(tx, "communities", value.communityId);
+      if (value.providerId) requireText(value.providerId);
+      if (value.serviceId) requireText(value.serviceId);
       return;
+    }
 
     case "relationships": {
       requireText((record as PersistenceRecordMap["relationships"]).subjectId);
