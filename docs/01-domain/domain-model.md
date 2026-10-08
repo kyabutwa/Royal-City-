@@ -3,14 +3,66 @@
 ## Status
 
 **Stage:** 1 — World & Domain Model  
-**Status:** Working baseline  
+**Status:** Policy resolution in progress  
 **Implementation:** Not defined
 
-This document consolidates the current Royal City domain model. It describes the world Royal City represents; it is not software architecture.
+This document describes the Royal City world and domain. It is not software architecture.
+
+## Royal City foundational model
+
+Royal City has three foundational participation layers:
+
+### People
+
+People are human participants in Royal City.
+
+A participating person receives:
+
+- a Royal City identity
+- a Royal City account
+- participation according to applicable roles, relationships, authority, and authorization
+
+A person may participate through a community or directly through Royal City-owned services.
+
+### Communities
+
+A Royal City community is a participating residential property or real-estate environment.
+
+A community does **not** receive a person-style identity/account.
+
+Instead, it receives community onboarding credentials used to connect its management environment to the Royal City Network Operating System.
+
+Through that connection, Royal City coordinates the community's participating:
+
+- people
+- management
+- services
+- places
+- utilities
+- economic activity
+- related physical and digital systems
+
+### Royal City
+
+Royal City is the operating system itself.
+
+It coordinates participating people, communities, services, places, resources, utilities, economic activity, and connected systems.
+
+Royal City also owns or operates services that people can use directly, including participation that does not require association with a community.
+
+## Participation paths
+
+### Community participation
+
+`Person → Royal City Identity/Account → Community Relationship → Authorization → Community / Community Provider → Service / Place / Resource`
+
+### Direct Royal City participation
+
+`Person → Royal City Identity/Account → Royal City Service → Authorization → Action`
 
 ## Core domain chain
 
-`Actor → Identity → Relationship / Authority → Authorization → Action → Target → Result → State / Record`
+`Participant → Identity or Participation Credentials → Relationship / Authority → Authorization → Action → Target → Result → State / Record`
 
 Economic activity may introduce:
 
@@ -20,91 +72,66 @@ A transaction is not synonymous with an action.
 
 ## Core concepts
 
-### Actor
-A participant capable of initiating, receiving, controlling, providing, or otherwise participating in a domain interaction.
+### Person
+A human participant with a Royal City identity and account.
 
-Current categories: person, organization, community, and an authorized system/device actor where Royal City explicitly permits autonomous participation.
+### Community
+A participating residential property or real-estate environment connected to Royal City through community onboarding credentials.
+
+### Royal City
+The Royal City Network Operating System that coordinates the participating ecosystem and provides Royal City-owned services.
 
 ### Identity
-The unified participation representation through which an actor is recognized.
+The unified participation representation assigned to a person. Identity answers who is participating; it does not itself establish permission.
 
-Identity answers **who or what is participating**. It does not itself establish permission.
+### Community onboarding credentials
+Credentials by which a community connects its management environment to the Royal City Network Operating System. They are not a person-style identity/account.
 
 ### Relationship
-A meaningful connection between actors or between an actor and another domain element. Relationships provide context for participation, authority, access, responsibility, representation, delegation, or service.
+A meaningful connection between participants and/or domain elements that provides participation context, authority, access, responsibility, service, representation, governance, or other domain meaning.
 
 ### Authority
-The domain basis that permits an actor to exercise a particular power, responsibility, or control.
-
-Authority is distinct from identity and from the authorization decision.
+The domain basis that permits a participant or authorized actor to exercise a particular power, responsibility, or control.
 
 ### Authorization
-The decision determining whether an identified actor may perform a specific action in a specific context.
-
-Conceptually:
-
-`Identity + Authority + Relationship + Context + Policy → Authorization Decision`
+The decision determining whether a specific participant may perform a specific action in a specific context.
 
 ### Place
-A physical location or spatial domain recognized or interacted with by Royal City.
+A physical/spatial domain recognized or interacted with by Royal City.
 
 ### Resource
-Something that can be controlled, accessed, consumed, allocated, used, provided, or otherwise acted upon.
+Something that can be accessed, controlled, allocated, used, provided, consumed, or otherwise acted upon.
 
 ### Service
-A capability made available to participants. A service is distinct from its provider, request, authorization, action, and result.
+A capability made available to participants. Services may be made available through participating communities/service providers or be owned/operated directly by Royal City.
 
 ### Action
-A meaningful operation performed by an actor through an identity under an applicable authorization context.
+A meaningful operation performed by a participant through the applicable identity/credentials under an applicable authorization context.
 
 ### Transaction
 A representation of an economic exchange or economic commitment where transactional semantics apply.
-
-### Community
-A participating social or organizational context with membership, relationships, rules, authority, or shared environment.
 
 ### State
 The current condition of a domain element or process according to domain rules.
 
 ### Record
-A domain-required representation of something that must remain attributable or observable after a significant action, transaction, decision, or state transition.
+A required persistent representation of a significant domain occurrence, decision, action, transaction, or state transition.
 
 ## Foundational invariants
 
-1. Every attributable Royal City action has an identifiable actor.
+1. A participating person has a Royal City identity and account.
 2. Identity and permission are separate concepts.
-3. Authorization requires an identifiable basis of authority.
-4. Authorization is contextual.
-5. Meaningful actions identify what is being attempted and what it acts upon.
-6. Meaningful actions have results, including defined failure where required.
-7. State-changing actions produce the required state consequence or record.
-8. Economic transactions are distinct from generic actions.
-9. Community authority is not automatically individual authority.
-10. Technical implementation cannot silently redefine domain semantics.
-11. Unknown domain rules remain unknown until explicitly decided.
-12. External systems are not automatically part of the Royal City domain merely because they integrate with it.
-
-## Remaining Stage 1 decisions
-
-The following require explicit Royal City policy decisions:
-
-- exact identity lifecycle
-- actor taxonomy
-- relationship taxonomy
-- ownership versus control
-- authority sources and precedence
-- delegation
-- community membership and governance
-- place hierarchy
-- resource taxonomy
-- service lifecycle and obligations
-- action taxonomy and lifecycle
-- economic boundary and transaction semantics
-- dispute/refund/finality rules
-- record authority and retention
-- emergency authority
-- external-domain boundary
-
-## Stage 1 gate
-
-Stage 1 is **not yet complete** until these remaining domain decisions are resolved sufficiently for Stage 2 architecture to proceed without inventing requirements.
+3. Community onboarding credentials are distinct from a person's identity/account.
+4. A community is a participating residential property/real-estate environment, not a person-style account.
+5. Royal City is the operating system coordinating the ecosystem, not an ordinary participant account.
+6. A person can participate through a community or directly through Royal City-owned services.
+7. Authorization requires an identifiable basis of authority.
+8. Authorization is contextual.
+9. Meaningful actions identify what is being attempted and what it acts upon.
+10. Meaningful actions have results, including defined failure where required.
+11. State-changing actions produce the required state consequence or record.
+12. Economic transactions are distinct from generic actions.
+13. Community authority is not automatically individual authority.
+14. Technical implementation cannot silently redefine domain semantics.
+15. Unknown domain rules remain unknown until explicitly decided.
+16. External systems are not automatically Royal City-owned domain objects merely because they integrate with Royal City.
