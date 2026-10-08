@@ -80,6 +80,10 @@ export interface RelationshipRecord {
   readonly scope?: string;
   readonly validFrom: string;
   readonly validUntil?: string;
+  readonly observedAt?: string;
+  readonly verifiedAt?: string;
+  readonly supersedesId?: Id;
+  readonly privacyClass?: string;
 }
 
 export interface ContextRecord {
