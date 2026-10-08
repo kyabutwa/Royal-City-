@@ -156,6 +156,8 @@ Royal City should be able to trace and represent the effects of resource failure
 Resources may be composed of other resources. A composite resource may consist of component resources whose existence, state, capacity, availability, or operation contributes to the composite resource. Examples include water systems composed of pumps, pipes, tanks, and treatment equipment; power systems composed of generation, storage, conversion, and wiring components; and facilities composed of space and supporting equipment. The exact composition, component lifecycle, dependency distinction, and state aggregation rules remain open.
 
 Resources may be transformed into other resources through authorized operations or processes. Transformation may change resource type, quantity, capacity, state, or other properties. Examples include raw water becoming treated water, solar energy becoming electricity, electricity becoming stored battery charge, raw materials becoming manufactured goods, data becoming processed information, and waste becoming recycled material. The exact transformation model, inputs/outputs, conversion rules, loss/yield semantics, and accounting remain open.
+
+Resource transformations and consumption may produce waste, byproducts, losses, or secondary resources that Royal City can represent. These outcomes may have their own quantity, state, lifecycle, ownership/control, availability, or further transformation. The exact waste/byproduct taxonomy, loss accounting, conservation rules, and processing semantics remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
