@@ -68,7 +68,7 @@ function validateRecord(
       return;
 
     case "communities":
-      requireText(record.name);
+      requireText((record as PersistenceRecordMap["communities"]).name);
       return;
 
     case "identities":
