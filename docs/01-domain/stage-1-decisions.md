@@ -187,6 +187,8 @@ Royal City's economic layer is part of the ecosystem's operating model, but Roya
 
 The exact monetary instruments, settlement model, commitment and finality semantics, reversals, refunds, disputes, financial authority, custody, regulatory boundaries, external-system integration, and other detailed economic rules remain open.
 
+Royal City may initiate and coordinate payments through connected external payment, banking, mobile-money, or other financial systems. Royal City does not need to hold or stockpile participants' money in order to coordinate these payments; the actual movement and settlement of funds may be performed by the connected external financial system. The exact payment initiation, authorization, settlement, confirmation, failure, reversal, refund, and reconciliation mechanics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
