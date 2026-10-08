@@ -221,6 +221,10 @@ The payer must be able to view their active and historical payment authorization
 
 Royal City should notify the payer when a payment authorization changes state, including when it is created, modified, revoked, expires, or is used for a payment. Notifications must respect identity, authorization, privacy, communication preferences, and applicable rules. The exact notification channels, timing, delivery guarantees, content, and suppression semantics remain open.
 
+## Payment-related delegation — additional resolved requirement
+
+Royal City should support limited delegation for payment-related actions that do not authorize or execute a payment. A payer or other authorized principal may delegate actions such as viewing payment status or receipts, submitting refund requests, opening payment disputes, or managing payment-related notifications, while actual payment authorization remains subject to the payer's explicit authorization and the payment-specific delegation restriction. The exact delegable action taxonomy, delegation scope, duration, revocation, visibility, and evidence semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
