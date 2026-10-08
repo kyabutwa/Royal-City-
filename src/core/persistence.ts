@@ -89,8 +89,14 @@ export interface RelationshipRecord {
 export interface ContextRecord {
   readonly id: Id;
   readonly participationId: Id;
+  readonly kind: string;
   readonly placeId?: Id;
+  readonly communityId?: Id;
   readonly purpose?: string;
+  readonly scope?: string;
+  readonly effectiveFrom: string;
+  readonly effectiveUntil?: string;
+  readonly status: "ACTIVE" | "SUSPENDED" | "EXPIRED" | "CLOSED";
 }
 
 export interface AuthorizationRecord {
