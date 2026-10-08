@@ -95,25 +95,25 @@ function validateRecord(
       return;
 
     case "relationships": {
-      requireText(record.subjectId);
-      requireText(record.targetId);
-      requireText(record.kind);
-      const from = new Date(record.validFrom);
+      requireText((record as PersistenceRecordMap["relationships"]).subjectId);
+      requireText((record as PersistenceRecordMap["relationships"]).targetId);
+      requireText((record as PersistenceRecordMap["relationships"]).kind);
+      const from = new Date((record as PersistenceRecordMap["relationships"]).validFrom);
       if (Number.isNaN(from.getTime())) throw new Error("INVALID_INPUT");
-      if (record.validUntil) {
-        const until = new Date(record.validUntil);
+      if ((record as PersistenceRecordMap["relationships"]).validUntil) {
+        const until = new Date((record as PersistenceRecordMap["relationships"]).validUntil!);
         if (Number.isNaN(until.getTime())) throw new Error("INVALID_INPUT");
         if (until <= from) throw new Error("VALIDATION_FAILURE");
       }
-      if (record.subjectId === record.targetId) {
+      if ((record as PersistenceRecordMap["relationships"]).subjectId === (record as PersistenceRecordMap["relationships"]).targetId) {
         throw new Error("VALIDATION_FAILURE");
       }
       return;
     }
 
     case "contexts":
-      requireReference(tx, "participations", record.participationId);
-      if (record.purpose !== undefined) requireText(record.purpose);
+      requireReference(tx, "participations", (record as PersistenceRecordMap["contexts"]).participationId);
+      if ((record as PersistenceRecordMap["contexts"]).purpose !== undefined) requireText((record as PersistenceRecordMap["contexts"]).purpose!);
       return;
 
     case "authorizations":
