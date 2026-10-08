@@ -72,26 +72,26 @@ function validateRecord(
       return;
 
     case "identities":
-      requireReference(tx, "persons", record.personId);
+      requireReference(tx, "persons", (record as PersistenceRecordMap["identities"]).personId);
       return;
 
     case "accounts":
-      requireReference(tx, "identities", record.identityId);
+      requireReference(tx, "identities", (record as PersistenceRecordMap["accounts"]).identityId);
       return;
 
     case "communityCredentials":
-      requireReference(tx, "communities", record.communityId);
+      requireReference(tx, "communities", (record as PersistenceRecordMap["communityCredentials"]).communityId);
       return;
 
     case "systemCredentials":
-      requireText(record.systemId);
+      requireText((record as PersistenceRecordMap["systemCredentials"]).systemId);
       return;
 
     case "participations":
-      requireReference(tx, "persons", record.personId);
-      if (record.communityId) requireReference(tx, "communities", record.communityId);
-      if (record.providerId) requireText(record.providerId);
-      if (record.serviceId) requireText(record.serviceId);
+      requireReference(tx, "persons", (record as PersistenceRecordMap["participations"]).personId);
+      if ((record as PersistenceRecordMap["participations"]).communityId) requireReference(tx, "communities", (record as PersistenceRecordMap["participations"]).communityId);
+      if ((record as PersistenceRecordMap["participations"]).providerId) requireText((record as PersistenceRecordMap["participations"]).providerId);
+      if ((record as PersistenceRecordMap["participations"]).serviceId) requireText((record as PersistenceRecordMap["participations"]).serviceId);
       return;
 
     case "relationships": {
