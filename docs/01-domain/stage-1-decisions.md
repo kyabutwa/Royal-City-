@@ -246,3 +246,13 @@ Royal City coordinates the ecosystem and governs its Network Operating System. C
 
 ## Completion rule
 Stage 1 closes only when D-101 through D-114 are either explicitly resolved as policy or deliberately declared non-domain concerns.
+
+
+## D-115 — Provider refund/dispute status synchronization
+**Status: Resolved at coordination boundary**
+
+When a provider changes the status of a refund or refund dispute, Royal City should synchronize the relevant provider-side status into the participant's Royal City experience where the interaction is Royal City-coordinated.
+
+The provider remains the source of truth for provider-side refund/dispute status and substantive decisions. Royal City coordinates identity, authorization, communication, status synchronization, participant experience, and the records required by Royal City. Royal City must not replace or redefine the provider's refund/dispute process.
+
+Exact synchronization protocol, status mapping, freshness guarantees, conflict handling, failure behavior, and reconciliation remain architecture work.
