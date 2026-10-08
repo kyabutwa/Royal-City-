@@ -270,4 +270,40 @@ test("authorization denies when authority is missing or expired", async () => {
   });
   assert.equal(missing.decision, "DENY");
   assert.equal(missing.reason, "AUTHORITY_NOT_FOUND");
+});test("action requires explicit ALLOW authorization bound to actor and operation", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const { createPersonIdentity, createAuthority, evaluateAuthorization } = await import("../../src/core/identity-participation.js");
+  const { requestAction } = await import("../../src/core/action-execution.js");
+  await createPersonIdentity(repository, { personId: id("person-action"), identityId: id("identity-action"), accountId: id("account-action") });
+  await createAuthority(repository, { authorityId: id("authority-action"), principalId: id("person-action"), targetId: id("facility-action"), kind: "ACCESS", source: "test", validFrom: "2026-01-01T00:00:00Z" });
+  await evaluateAuthorization(repository, { authorizationId: id("authorization-action"), requesterId: id("person-action"), action: "OPEN_GATE", targetId: id("facility-action"), authorityId: id("authority-action"), decidedAt: "2026-06-01T00:00:00Z" });
+  const action = await requestAction(repository, { actionId: id("action-1"), actorId: id("person-action"), authorizationId: id("authorization-action"), operation: "OPEN_GATE", idempotencyKey: "open-gate-1" });
+  assert.equal(action.state, "AUTHORIZED");
+  assert.equal(repository.read("events", id("action-1:authorized"))?.type, "ACTION_AUTHORIZED");
+});
+
+test("action rejects denied authorization and conflicting idempotency reuse", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const { createPersonIdentity, createAuthority, evaluateAuthorization } = await import("../../src/core/identity-participation.js");
+  const { requestAction } = await import("../../src/core/action-execution.js");
+  await createPersonIdentity(repository, { personId: id("person-deny"), identityId: id("identity-deny"), accountId: id("account-deny") });
+  await evaluateAuthorization(repository, { authorizationId: id("authorization-deny"), requesterId: id("person-deny"), action: "PAY", targetId: id("merchant-deny"), decidedAt: "2026-06-01T00:00:00Z" });
+  await assert.rejects(requestAction(repository, { actionId: id("action-deny"), actorId: id("person-deny"), authorizationId: id("authorization-deny"), operation: "PAY", idempotencyKey: "pay-1" }), { message: "NOT_AUTHORIZED" });
+  await createAuthority(repository, { authorityId: id("authority-idem"), principalId: id("person-deny"), targetId: id("merchant-idem"), kind: "PAY", source: "test", validFrom: "2026-01-01T00:00:00Z" });
+  await evaluateAuthorization(repository, { authorizationId: id("authorization-idem"), requesterId: id("person-deny"), action: "PAY", targetId: id("merchant-idem"), authorityId: id("authority-idem"), decidedAt: "2026-06-01T00:00:00Z" });
+  await requestAction(repository, { actionId: id("action-idem"), actorId: id("person-deny"), authorizationId: id("authorization-idem"), operation: "PAY", idempotencyKey: "pay-conflict" });
+  await assert.rejects(requestAction(repository, { actionId: id("action-idem-2"), actorId: id("person-deny"), authorizationId: id("authorization-idem"), operation: "OTHER", idempotencyKey: "pay-conflict" }), { message: "IDEMPOTENCY_CONFLICT" });
+});
+
+test("execution records EXECUTING and final outcome with events", async () => {
+  const repository = new InMemoryPersistenceRepository();
+  const { createPersonIdentity, createAuthority, evaluateAuthorization } = await import("../../src/core/identity-participation.js");
+  const { requestAction, executeAction } = await import("../../src/core/action-execution.js");
+  await createPersonIdentity(repository, { personId: id("person-exec"), identityId: id("identity-exec"), accountId: id("account-exec") });
+  await createAuthority(repository, { authorityId: id("authority-exec"), principalId: id("person-exec"), targetId: id("resource-exec"), kind: "OPERATE", source: "test", validFrom: "2026-01-01T00:00:00Z" });
+  await evaluateAuthorization(repository, { authorizationId: id("authorization-exec"), requesterId: id("person-exec"), action: "OPERATE", targetId: id("resource-exec"), authorityId: id("authority-exec"), decidedAt: "2026-06-01T00:00:00Z" });
+  await requestAction(repository, { actionId: id("action-exec"), actorId: id("person-exec"), authorizationId: id("authorization-exec"), operation: "OPERATE" });
+  const succeeded = await executeAction(repository, id("action-exec"), async () => "SUCCEEDED", (state, version) => id("event-" + state + "-" + version));
+  assert.equal(succeeded.state, "SUCCEEDED");
+  assert.equal(repository.read("events", id("event-SUCCEEDED-3"))?.state, "SUCCEEDED");
 });
