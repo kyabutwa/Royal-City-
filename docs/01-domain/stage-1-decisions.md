@@ -203,6 +203,8 @@ Royal City may support payment disputes as a first-class economic process. A dis
 
 Royal City should create a payment record and proof of outcome for each coordinated payment. The record may capture the payment request, applicable authorization, payer and recipients, amount or allocation, purpose, payment source or method where permitted, timestamps, processing status, completion or failure outcome, refund or dispute relationship where applicable, and an external transaction or settlement reference where available. The record should distinguish what was requested, what was authorized, what was attempted, and what actually occurred. The exact receipt format, proof requirements, record visibility, correction, retention, reconciliation, and privacy rules remain open.
 
+Royal City should support notifications for important payment lifecycle events to the relevant authorized participants. Events may include payment requests, authorization, successful or failed processing, refunds, dispute initiation and resolution, and upcoming or triggered automatic payments. Notifications must respect identity, authorization, privacy, communication preferences, and applicable rules. The exact notification channels, timing, delivery guarantees, content, escalation, suppression, and preference semantics remain open.
+
 ## D-112 — Record model
 **Status: Partially resolved**
 
