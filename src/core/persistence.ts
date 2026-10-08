@@ -73,6 +73,11 @@ export interface RelationshipRecord {
   readonly subjectId: Id;
   readonly targetId: Id;
   readonly kind: string;
+  readonly governingDomain: string;
+  readonly source: string;
+  readonly lifecycle: "PROPOSED" | "PENDING" | "ACTIVE" | "SUSPENDED" | "EXPIRED" | "REVOKED" | "CLOSED" | "SUPERSEDED";
+  readonly verification: "DECLARED" | "OBSERVED" | "VERIFIED" | "INFERRED" | "PROPOSED";
+  readonly scope?: string;
   readonly validFrom: string;
   readonly validUntil?: string;
 }
