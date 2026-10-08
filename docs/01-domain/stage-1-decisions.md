@@ -140,6 +140,8 @@ Resources may also have measurable quantities or capacities. Royal City must be 
 Resources may be consumed or depleted through authorized actions. Consumption can reduce a resource's available quantity or capacity over time, such as water, electricity/energy, fuel, storage, service-hours, or inventory. The exact consumption, replenishment, reservation, accounting, and measurement semantics remain open.
 
 Resources may also be replenished, restored, replenished through supply, or have their available quantity or capacity increased. Examples include refilling water, charging batteries, restocking inventory, increasing storage capacity, adding staff capacity, or adding electricity generation capacity. The exact replenishment, restoration, expansion, accounting, and measurement semantics remain open.
+
+Resources may be reserved before actual use. A reservation may temporarily hold some quantity or capacity for an authorized participant, place, service, or activity. Examples include parking, rooms, facilities, vehicles, electricity capacity, service capacity, or inventory. The exact reservation lifecycle, priority, expiration, conflict, release, and commitment semantics remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
