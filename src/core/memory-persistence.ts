@@ -20,6 +20,7 @@ const TABLES: readonly RepositoryTable[] = [
   "participations",
   "relationships",
   "contexts",
+  "authorities",
   "authorizations",
   "actions",
   "events",
@@ -118,21 +119,34 @@ function validateRecord(
       if ((record as PersistenceRecordMap["contexts"]).purpose !== undefined) requireText((record as PersistenceRecordMap["contexts"]).purpose!);
       return;
 
-    case "authorizations":
-      requireText((record as PersistenceRecordMap["authorizations"]).actorId);
-      requireText((record as PersistenceRecordMap["authorizations"]).actionType);
-      requireText((record as PersistenceRecordMap["authorizations"]).validFrom);
-      if ((record as PersistenceRecordMap["authorizations"]).relationshipId) requireReference(tx, "relationships", (record as PersistenceRecordMap["authorizations"]).relationshipId!);
-      if ((record as PersistenceRecordMap["authorizations"]).contextId) requireReference(tx, "contexts", (record as PersistenceRecordMap["authorizations"]).contextId!);
-      if ((record as PersistenceRecordMap["authorizations"]).validUntil) {
-        const from = new Date((record as PersistenceRecordMap["authorizations"]).validFrom);
-        const until = new Date((record as PersistenceRecordMap["authorizations"]).validUntil!);
-        if (Number.isNaN(from.getTime()) || Number.isNaN(until.getTime())) {
-          throw new Error("INVALID_INPUT");
-        }
-        if (until <= from) throw new Error("VALIDATION_FAILURE");
+    case "authorities": {
+      const value = record as PersistenceRecordMap["authorities"];
+      requireText(value.principalId);
+      requireText(value.targetId);
+      requireText(value.kind);
+      requireText(value.source);
+      const from = new Date(value.validFrom);
+      if (Number.isNaN(from.getTime())) throw new Error("INVALID_INPUT");
+      if (value.validUntil) {
+        const until = new Date(value.validUntil);
+        if (Number.isNaN(until.getTime()) || until <= from) throw new Error("VALIDATION_FAILURE");
       }
       return;
+    }
+
+    case "authorizations": {
+      const value = record as PersistenceRecordMap["authorizations"];
+      if (value.actorId) requireText(value.actorId);
+      if (value.requesterId) requireText(value.requesterId);
+      if (value.actionType) requireText(value.actionType);
+      if (value.action) requireText(value.action);
+      if (value.validFrom) requireText(value.validFrom);
+      if (value.decidedAt) requireText(value.decidedAt);
+      if (value.relationshipId) requireReference(tx, "relationships", value.relationshipId);
+      if (value.contextId) requireReference(tx, "contexts", value.contextId);
+      if (value.authorityId) requireReference(tx, "authorities", value.authorityId);
+      return;
+    }
 
     case "actions":
       requireReference(tx, "authorizations", (record as PersistenceRecordMap["actions"]).authorizationId);
