@@ -144,6 +144,8 @@ Resources may also be replenished, restored, replenished through supply, or have
 Resources may be reserved before actual use. A reservation may temporarily hold some quantity or capacity for an authorized participant, place, service, or activity. Examples include parking, rooms, facilities, vehicles, electricity capacity, service capacity, or inventory. The exact reservation lifecycle, priority, expiration, conflict, release, and commitment semantics remain open.
 
 A resource may have an owner and/or controlling authority distinct from the participants who use it. Ownership and control may belong to a community, provider, Royal City service, person, organization, or other authorized authority depending on the resource. The exact ownership/control categories, rights, transfer rules, and precedence remain open.
+
+Resources may have access and usage rules that determine who or what may access, use, reserve, operate, or consume them. These rules may differ by role, relationship, authorization, place, context, time, or other conditions. The exact policy model and precedence remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
