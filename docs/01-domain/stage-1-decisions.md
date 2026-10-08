@@ -134,6 +134,8 @@ The exact resource taxonomy, lifecycle, ownership/control model, availability mo
 Resources may be shared across multiple participants, places, buildings, units, phases, communities, providers, or systems. A single resource may therefore serve multiple consumers or contexts without being duplicated for each one.
 
 Resource availability may change over time and must be representable as changing states or conditions. Examples include available, interrupted, restored, reserved, occupied, limited, fully allocated, or unavailable. The exact availability-state taxonomy, transition rules, scheduling model, and concurrency semantics remain open.
+
+Resources may also have measurable quantities or capacities. Royal City must be able to represent values such as volume, power, count, bandwidth, storage capacity, occupancy capacity, or available service-hours. The exact units, measurement model, precision, aggregation, and capacity semantics remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
