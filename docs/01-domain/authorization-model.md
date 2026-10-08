@@ -1,79 +1,30 @@
-# Authorization Model — Domain Questions
+# Royal City — Authorization Model
 
-## Purpose
+## Policy model
 
-Authorization is central to Royal City's unified identity model.
+Human authorization:
+Identity + Participation + Authority + Context + Policy → Authorization Decision
 
-This document establishes the questions the domain must answer before an implementation model is selected.
+System authorization:
+System Credential + Delegated/Service Authority + Context + Policy → Authorization Decision
 
-## Conceptual model
+## Established policy
 
-`Identity + Relationship + Context + Policy → Authorization Decision`
+- A person's role comes from their participation context.
+- One person can hold multiple simultaneous roles and participations.
+- The same role may have different authority depending on the authority granted in that participation.
+- Property owners hold community authority through community management.
+- Authority may be delegated to people, external participants, and approved systems.
+- Delegation may be scoped, conditional, time-bound, revoked, and delegated onward within the authority held.
+- A delegate cannot grant more authority than it possesses.
+- Invitations provide only the access/participation explicitly authorized; they do not grant general community authority.
+- Community rules can restrict invitations and individual access.
+- Royal City network rules can impose mandatory requirements for participation in Royal City.
+- Identity information is not automatically disclosed to every participant; disclosure is contextual and policy-controlled.
+- A person may revoke information-access authorization subject to applicable obligations.
+- Royal City may suspend a person's network participation under identity/security/network policy.
+- A community may independently suspend or terminate a person's participation in that community.
 
-The equation is conceptual, not an implementation specification.
+## Decision outcomes
 
-## Questions
-
-### Subject
-
-Who is requesting the action?
-
-- person
-- organization
-- community
-- delegated actor
-- approved system or device
-
-### Action
-
-What exactly is being requested?
-
-The action must be represented at a level meaningful to the Royal City domain.
-
-### Target
-
-What is affected?
-
-Potential target categories include:
-
-- place
-- unit
-- facility
-- resource
-- service
-- relationship
-- economic activity
-- physical system
-- digital system
-
-### Authority
-
-Why is the actor entitled to request the action?
-
-Possible sources of authority must be defined by the domain rather than assumed.
-
-### Context
-
-Which conditions matter?
-
-Potential dimensions include location, time, relationship, community, purpose, state, and other domain conditions.
-
-### Decision
-
-The domain must define possible authorization outcomes, at minimum distinguishing an authorized action from an unauthorized action.
-
-Additional outcomes such as pending, conditional, or requiring additional authority remain open questions.
-
-## Critical distinction
-
-Royal City must never treat:
-
-`Identity = Permission`
-
-The foundational distinction is:
-
-`Identity → establishes actor`
-
-`Authorization → establishes permitted action`
-
-This distinction is foundational to the ecosystem.
+At minimum, authorization distinguishes authorized from unauthorized actions. Additional outcome states and complete conflict-resolution rules remain open.
