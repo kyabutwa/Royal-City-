@@ -158,6 +158,8 @@ Resources may be composed of other resources. A composite resource may consist o
 Resources may be transformed into other resources through authorized operations or processes. Transformation may change resource type, quantity, capacity, state, or other properties. Examples include raw water becoming treated water, solar energy becoming electricity, electricity becoming stored battery charge, raw materials becoming manufactured goods, data becoming processed information, and waste becoming recycled material. The exact transformation model, inputs/outputs, conversion rules, loss/yield semantics, and accounting remain open.
 
 Resource transformations and consumption may produce waste, byproducts, losses, or secondary resources that Royal City can represent. These outcomes may have their own quantity, state, lifecycle, ownership/control, availability, or further transformation. The exact waste/byproduct taxonomy, loss accounting, conservation rules, and processing semantics remain open.
+
+Royal City resources may be continuously measured through telemetry or other automated observations. Measurements may report quantity, capacity, consumption, generation, occupancy, availability, state, performance, or other resource properties over time. The exact telemetry sources, measurement protocols, frequency, accuracy, trust model, storage, aggregation, and reconciliation rules remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
