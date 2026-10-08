@@ -4,25 +4,20 @@
 
 This document records what Stage 1 has actually resolved and what still requires explicit Royal City policy.
 
-## Newly established by the current policy clarification
+## Newly established
 
-### People
-- People are human participants.
-- People receive a Royal City identity and account.
-- Their participation is managed according to applicable roles, relationships, authority, and authorization.
-- People may participate through a community or directly through Royal City-owned services.
-
-### Communities
-- A community is a participating residential property or real-estate environment.
-- A community does not receive a person-style identity/account.
-- A community receives onboarding credentials to connect its management environment to the Royal City Network Operating System.
-- Royal City coordinates the participating community's management, people, services, places, utilities, economy, and related systems.
-
-### Royal City
-- Royal City is the Network Operating System itself.
-- Royal City coordinates the participating ecosystem.
-- Royal City can own/operate services available directly to people.
-- A person therefore does not require community association to participate in Royal City.
+- People receive one coherent Royal City identity/account and may hold multiple simultaneous participations and roles.
+- Communities are residential property/real-estate environments using onboarding credentials rather than person-style accounts.
+- Property owners hold community authority through community management.
+- Royal City is the Network Operating System and separately governs network-level identity, security, integrity, and participation requirements.
+- People may participate directly through Royal City-owned services without a community.
+- Providers may manage their own workers, services, details, and operating environments and may serve multiple communities.
+- Approved systems may use system credentials and act under bounded delegated authority.
+- Delegation can be scoped, conditional, time-bound, revoked, and delegated onward within held authority.
+- Invitations provide bounded participation/access, not general authority.
+- Community participation can be suspended/terminated independently of a person's Royal City identity.
+- A community may choose Royal City services and may withdraw without terminating people's identities.
+- Identity information is disclosed according to participation context, authorization, legitimate need, and policy.
 
 ## Still partially resolved
 
