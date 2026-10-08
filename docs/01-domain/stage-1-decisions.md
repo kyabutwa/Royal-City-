@@ -160,6 +160,8 @@ Resources may be transformed into other resources through authorized operations 
 Resource transformations and consumption may produce waste, byproducts, losses, or secondary resources that Royal City can represent. These outcomes may have their own quantity, state, lifecycle, ownership/control, availability, or further transformation. The exact waste/byproduct taxonomy, loss accounting, conservation rules, and processing semantics remain open.
 
 Royal City resources may be continuously measured through telemetry or other automated observations. Measurements may report quantity, capacity, consumption, generation, occupancy, availability, state, performance, or other resource properties over time. The exact telemetry sources, measurement protocols, frequency, accuracy, trust model, storage, aggregation, and reconciliation rules remain open.
+
+Royal City may generate alerts or domain events when resource conditions, measurements, state changes, thresholds, patterns, or anomalies meet defined criteria. Alerts may represent conditions such as low levels, excessive load, overflow, full occupancy, critical battery state, severe capacity constraints, abnormal consumption, or other detected conditions. The exact alert taxonomy, threshold and pattern rules, severity model, detection confidence, escalation, notification, suppression, correlation, and automated-response semantics remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
