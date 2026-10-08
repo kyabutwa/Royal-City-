@@ -154,6 +154,8 @@ Resources may depend on other resources. These dependencies can affect availabil
 Royal City should be able to trace and represent the effects of resource failures, limitations, restoration, and other state changes through dependency chains. A change in one resource may affect dependent resources, places, services, or other domain elements, and restoration may enable recovery of affected dependencies. The exact propagation, prioritization, timing, causality, and recovery rules remain open.
 
 Resources may be composed of other resources. A composite resource may consist of component resources whose existence, state, capacity, availability, or operation contributes to the composite resource. Examples include water systems composed of pumps, pipes, tanks, and treatment equipment; power systems composed of generation, storage, conversion, and wiring components; and facilities composed of space and supporting equipment. The exact composition, component lifecycle, dependency distinction, and state aggregation rules remain open.
+
+Resources may be transformed into other resources through authorized operations or processes. Transformation may change resource type, quantity, capacity, state, or other properties. Examples include raw water becoming treated water, solar energy becoming electricity, electricity becoming stored battery charge, raw materials becoming manufactured goods, data becoming processed information, and waste becoming recycled material. The exact transformation model, inputs/outputs, conversion rules, loss/yield semantics, and accounting remain open.
 ## D-109 — Service model
 **Status: Resolved at participation boundary**
 
